@@ -24,31 +24,13 @@
 .logo {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
   text-decoration: none;
 }
 
-.logo-circle {
-  width: 40px;
+.logo-image {
   height: 40px;
-  background-color: var(--primary-blue);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.logo-r {
-  color: var(--white);
-  font-weight: 700;
-  font-size: 1.2rem;
-}
-
-.logo-text {
-  color: var(--primary-blue);
-  font-weight: 700;
-  font-size: 1.1rem;
-  letter-spacing: 0.5px;
+  width: auto;
+  object-fit: contain;
 }
 
 .nav {
@@ -58,7 +40,7 @@
 }
 
 .nav-link {
-  color: var(--primary-blue);
+  color: var(--nav-gray);
   text-decoration: none;
   font-weight: 600;
   font-size: 0.9rem;
@@ -68,6 +50,27 @@
 
 .nav-link:hover {
   color: var(--bright-teal);
+}
+
+.search-icon {
+  color: var(--nav-gray);
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.search-icon:hover {
+  color: var(--bright-teal);
+}
+
+.header-cta {
+  font-weight: 700;
+  border-radius: 25px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9rem;
+  background-color: #09a6e4 !important;
+  color: white !important;
 }
 
 /* Hero Section */
@@ -107,7 +110,7 @@
 .hero-subtitle {
   font-size: 1.25rem;
   font-weight: 500;
-  color: var(--primary-blue);
+  color: var(--nav-gray);
   line-height: 1.4;
   margin-bottom: 0.5rem;
 }
@@ -123,7 +126,13 @@
   align-self: flex-start;
   padding: 1rem 2rem;
   font-size: 1.1rem;
+  font-weight: 700;
   margin-bottom: 1rem;
+  border-radius: 25px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background-color: #09a6e4 !important;
+  color: white !important;
 }
 
 .trust-indicator {
@@ -279,14 +288,17 @@
   color: var(--white);
   border: none;
   padding: 0.5rem 1rem;
-  border-radius: 4px;
+  border-radius: 20px;
   font-size: 0.8rem;
+  font-weight: 700;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .module-btn:hover {
   background-color: var(--bright-teal);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(9, 166, 228, 0.3);
 }
 
 .monitor-stand {
@@ -370,6 +382,16 @@
   transform: translateY(-2px);
 }
 
+.logo-item.manpower {
+  color: #1e3a8a;
+  font-weight: 600;
+}
+
+.logo-item.airproducts {
+  color: #0ea5e9;
+  font-weight: 600;
+}
+
 .logo-item.amazon {
   color: #ff9900;
   position: relative;
@@ -399,25 +421,6 @@
   right: -5px;
   color: #ffd700;
   font-size: 1rem;
-}
-
-.logo-item.bnsf {
-  color: #ff6600;
-  position: relative;
-}
-
-.logo-item.bnsf::after {
-  content: '→';
-  position: absolute;
-  top: 50%;
-  right: -10px;
-  transform: translateY(-50%);
-  color: #ff6600;
-  font-size: 1.2rem;
-}
-
-.logo-item.kellanova {
-  color: #dc2626;
 }
 
 /* Responsive Design */

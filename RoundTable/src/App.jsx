@@ -9,10 +9,7 @@ function App() {
           <div className="header-content">
             {/* Logo */}
             <div className="logo">
-              <div className="logo-circle">
-                <span className="logo-r">R</span>
-              </div>
-              <span className="logo-text">Roundtable LEARNING</span>
+              <img src="/logo.jpg" alt="Roundtable Learning" className="logo-image" />
             </div>
 
             {/* Navigation */}
@@ -20,10 +17,16 @@ function App() {
               <a href="#solutions" className="nav-link">SOLUTIONS</a>
               <a href="#resources" className="nav-link">RESOURCE CENTER</a>
               <a href="#about" className="nav-link">ABOUT</a>
+              <div className="search-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <path d="m21 21-4.35-4.35"></path>
+                </svg>
+              </div>
             </nav>
 
             {/* CTA Button */}
-            <a href="#get-started" className="btn btn-primary">GET STARTED</a>
+            <a href="#get-started" className="btn btn-primary header-cta">GET STARTED</a>
           </div>
         </div>
       </header>
@@ -114,10 +117,10 @@ function App() {
       <section className="client-logos">
         <div className="container">
           <div className="logos-grid">
+            <div className="logo-item manpower">ManpowerGroup</div>
+            <div className="logo-item airproducts">AIR PRODUCTS</div>
             <div className="logo-item amazon">amazon</div>
             <div className="logo-item walmart">Walmart</div>
-            <div className="logo-item bnsf">BNSF</div>
-            <div className="logo-item kellanova">Kellanova</div>
           </div>
         </div>
       </section>

@@ -1,13 +1,14 @@
 /* Roundtable Learning Website Clone */
 :root {
-  /* Color Palette */
+  /* Color Palette - Exact match from image */
   --primary-blue: #1e3a8a;
-  --bright-teal: #10b981;
+  --bright-teal: #09a6e4;
   --white: #ffffff;
   --light-gray: #f8fafc;
   --medium-gray: #e2e8f0;
   --dark-gray: #64748b;
   --text-dark: #1e293b;
+  --nav-gray: #374151;
   
   /* Typography */
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
@@ -72,24 +73,28 @@ p {
 .btn {
   display: inline-block;
   padding: 12px 24px;
-  border-radius: 6px;
-  font-weight: 600;
+  border-radius: 25px;
+  font-weight: 700;
   text-decoration: none;
   text-align: center;
   cursor: pointer;
   transition: all 0.3s ease;
   border: none;
   font-size: 1rem;
+  font-family: inherit;
 }
 
 .btn-primary {
-  background-color: var(--bright-teal);
-  color: var(--white);
+  background-color: #09a6e4 !important;
+  color: var(--white) !important;
+  border: none;
+  font-weight: 700;
 }
 
 .btn-primary:hover {
-  background-color: #059669;
-  transform: translateY(-1px);
+  background-color: #247cda !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(60, 210, 233, 0.3);
 }
 
 .btn-secondary {
