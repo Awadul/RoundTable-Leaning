@@ -1,6 +1,75 @@
 import './App.css'
+import { useEffect, useRef, useState } from 'react'
+import SolutionsMegaMenu from './components/SolutionsMegaMenu.jsx'
+import ResourceCenterMegaMenu from './components/ResourceCenterMegaMenu.jsx'
+import AboutMegaMenu from './components/AboutMegaMenu.jsx'
 
 function App() {
+  const [solutionsOpen, setSolutionsOpen] = useState(false)
+  const [resourceOpen, setResourceOpen] = useState(false)
+  const [aboutOpen, setAboutOpen] = useState(false)
+  const solutionsBtnRef = useRef(null)
+  const resourceBtnRef = useRef(null)
+  const aboutBtnRef = useRef(null)
+
+  // Close on route hash change or click outside handled by overlay; ensure focus returns
+  useEffect(() => {
+    if (!solutionsOpen) return
+    const onScroll = () => setSolutionsOpen(false)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [solutionsOpen])
+
+  const toggleSolutions = (e) => {
+    e.preventDefault()
+    setSolutionsOpen((v) => {
+      const next = !v
+      if (next) {
+        setResourceOpen(false)
+        setAboutOpen(false)
+      }
+      return next
+    })
+  }
+
+  useEffect(() => {
+    if (!resourceOpen) return
+    const onScroll = () => setResourceOpen(false)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [resourceOpen])
+
+  const toggleResource = (e) => {
+    e.preventDefault()
+    setResourceOpen((v) => {
+      const next = !v
+      if (next) {
+        setSolutionsOpen(false)
+        setAboutOpen(false)
+      }
+      return next
+    })
+  }
+
+  useEffect(() => {
+    if (!aboutOpen) return
+    const onScroll = () => setAboutOpen(false)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [aboutOpen])
+
+  const toggleAbout = (e) => {
+    e.preventDefault()
+    setAboutOpen((v) => {
+      const next = !v
+      if (next) {
+        setSolutionsOpen(false)
+        setResourceOpen(false)
+      }
+      return next
+    })
+  }
+
   return (
     <div className="app">
       {/* Header */}
@@ -14,9 +83,54 @@ function App() {
 
             {/* Navigation */}
             <nav className="nav">
-              <a href="#solutions" className="nav-link">SOLUTIONS</a>
-              <a href="#resources" className="nav-link">RESOURCE CENTER</a>
-              <a href="#about" className="nav-link">ABOUT</a>
+              <a
+                href="#solutions"
+                ref={solutionsBtnRef}
+                className={`nav-link ${solutionsOpen ? 'active' : ''}`}
+                onClick={toggleSolutions}
+                onMouseEnter={() => {
+                  setSolutionsOpen(true)
+                  setResourceOpen(false)
+                  setAboutOpen(false)
+                }}
+                aria-haspopup="menu"
+                aria-expanded={solutionsOpen}
+                role="button"
+              >
+                SOLUTIONS
+              </a>
+              <a
+                href="#resources"
+                ref={resourceBtnRef}
+                className={`nav-link ${resourceOpen ? 'active' : ''}`}
+                onClick={toggleResource}
+                onMouseEnter={() => {
+                  setResourceOpen(true)
+                  setSolutionsOpen(false)
+                  setAboutOpen(false)
+                }}
+                aria-haspopup="menu"
+                aria-expanded={resourceOpen}
+                role="button"
+              >
+                RESOURCE CENTER
+              </a>
+              <a
+                href="#about"
+                ref={aboutBtnRef}
+                className={`nav-link ${aboutOpen ? 'active' : ''}`}
+                onClick={toggleAbout}
+                onMouseEnter={() => {
+                  setAboutOpen(true)
+                  setSolutionsOpen(false)
+                  setResourceOpen(false)
+                }}
+                aria-haspopup="menu"
+                aria-expanded={aboutOpen}
+                role="button"
+              >
+                ABOUT
+              </a>
               <div className="search-icon">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <circle cx="11" cy="11" r="8"></circle>
@@ -30,6 +144,13 @@ function App() {
           </div>
         </div>
       </header>
+
+      {/* Solutions Mega Menu */}
+      <SolutionsMegaMenu open={solutionsOpen} onClose={() => setSolutionsOpen(false)} />
+      {/* Resource Center Mega Menu */}
+      <ResourceCenterMegaMenu open={resourceOpen} onClose={() => setResourceOpen(false)} />
+      {/* About Mega Menu */}
+      <AboutMegaMenu open={aboutOpen} onClose={() => setAboutOpen(false)} />
 
       {/* Hero Section */}
       <section className="hero">
