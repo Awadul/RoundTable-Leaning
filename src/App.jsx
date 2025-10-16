@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import './App.css'
 import { useEffect, useRef, useState } from 'react'
 import SolutionsMegaMenu from './components/SolutionsMegaMenu.jsx'
