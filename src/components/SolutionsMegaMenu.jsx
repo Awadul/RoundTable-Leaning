@@ -65,7 +65,11 @@ function SolutionsMegaMenu({ open, onClose }) {
               </h3>
               <p className="mega-card-desc">Explore, engage and enhance skills in an immersive, risk-free environment.</p>
               <ul className="mega-links">
-                <li><a href="https://roundtablelearning.com/virtual-reality-training/">Virtual Reality Training</a></li>
+                <li>
+                  <Link to="/vr-training" onClick={() => onClose?.()}>
+                    Virtual Reality Training
+                  </Link>
+                </li>
                 <li><a href="https://roundtablelearning.com/augmented-reality-training/">Augmented Reality Training</a></li>
                 <li><a href="https://roundtablelearning.com/mixed-reality-training/">Mixed Reality Training</a></li>
                 <li><a href="https://roundtablelearning.com/mercuryxrs/">Data &amp; Analytics</a></li>
