@@ -5,6 +5,7 @@ import './index.css'
 import './App.css'
 import HomePage from './Pages/HomePage.jsx'
 import ExtendedRealityPage from './Pages/ExtendedRealityPage.jsx'
+import VirtualRealityTraining from './Pages/VirtualRealityTraining.jsx'
 import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import SolutionsMegaMenu from './components/SolutionsMegaMenu.jsx'
@@ -184,6 +185,7 @@ createRoot(document.getElementById('root')).render(
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/extended-reality-training" element={<ExtendedRealityPage />} />
+          <Route path="/vr-training" element={<VirtualRealityTraining />} />
         </Routes>
       </App>
     </BrowserRouter>
