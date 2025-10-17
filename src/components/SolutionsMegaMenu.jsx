@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 function SolutionsMegaMenu({ open, onClose }) {
   const overlayRef = useRef(null)
@@ -57,7 +58,11 @@ function SolutionsMegaMenu({ open, onClose }) {
 
           <div className="mega-grid">
             <div className="mega-card gradient-a">
-              <h3 className="mega-card-title"><a href="https://roundtablelearning.com/extended-reality-training/">Extended Reality</a></h3>
+              <h3 className="mega-card-title">
+                <Link to="/extended-reality-training" onClick={() => onClose?.()}>
+                  Extended Reality
+                </Link>
+              </h3>
               <p className="mega-card-desc">Explore, engage and enhance skills in an immersive, risk-free environment.</p>
               <ul className="mega-links">
                 <li><a href="https://roundtablelearning.com/virtual-reality-training/">Virtual Reality Training</a></li>
