@@ -239,11 +239,7 @@ function HomePage() {
               </div>
             </div>
           </div>
-
-          <div className="testimonials-navigation">
-            <button className="testimonial-prev">‹</button>
-            <button className="testimonial-next">›</button>
-          </div>
+        
         </div>
       </section>
     </>
