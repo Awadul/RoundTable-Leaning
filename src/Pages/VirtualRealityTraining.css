@@ -2690,7 +2690,7 @@
    ================================ */
 
 .vr-contact-form-section {
-  padding: 100px 20px;
+  padding: 100px 20px 140px 20px;
   background: #f5f5f5;
   display: flex;
   justify-content: center;
@@ -2698,15 +2698,14 @@
 }
 
 .vr-contact-form-container {
-  max-width: 1200px;
+  max-width: 1100px;
+  height: 80vh;
   width: 100%;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1.3fr;
+  grid-template-columns: 0.9fr 1.1fr;
   gap: 0;
   align-items: stretch;
-  min-height: 600px;
-  max-height: 50vh;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
   overflow: hidden;
@@ -2716,60 +2715,61 @@
   position: relative;
   overflow: hidden;
   background: #e0e0e0;
+  min-height: 100%;
 }
 
 .vr-contact-form-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   display: block;
 }
 
 .vr-contact-form-wrapper {
   background: white;
-  padding: 60px 50px;
+  padding: 40px 45px;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow-y: auto;
 }
 
 .vr-contact-form-content {
-  max-width: 600px;
+  max-width: 550px;
   width: 100%;
 }
 
 .vr-contact-form-title {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 700;
   color: #004d5e;
-  margin: 0 0 15px 0;
+  margin: 0 0 12px 0;
   line-height: 1.2;
 }
 
 .vr-contact-form-subtitle {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: #0e6b82;
-  margin: 0 0 25px 0;
-  line-height: 1.6;
+  margin: 0 0 20px 0;
+  line-height: 1.5;
 }
 
 .vr-contact-form {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
 }
 
 .vr-form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 15px;
+  gap: 12px;
 }
 
 .vr-form-field {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 5px;
 }
 
 .vr-form-field-full {
@@ -2777,15 +2777,15 @@
 }
 
 .vr-form-field label {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 500;
   color: #03708f;
   display: block;
 }
 
 .vr-form-field input {
-  padding: 12px 14px;
-  font-size: 0.95rem;
+  padding: 10px 12px;
+  font-size: 0.9rem;
   border: 1px solid #e0e0e0;
   border-radius: 6px;
   outline: none;
@@ -2807,20 +2807,20 @@
 }
 
 .vr-form-progress {
-  margin-top: 15px;
+  margin-top: 10px;
 }
 
 .vr-form-progress-text {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: #004359;
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   font-weight: 500;
 }
 
 .vr-form-progress-bar {
   width: 100%;
-  height: 6px;
+  height: 5px;
   background: #e8e8e8;
   border-radius: 10px;
   overflow: hidden;
@@ -2836,16 +2836,16 @@
 .vr-form-submit {
   display: flex;
   justify-content: flex-end;
-  margin-top: 8px;
+  margin-top: 6px;
 }
 
 .vr-form-submit-btn {
-  padding: 12px 45px;
+  padding: 10px 40px;
   background: #006d7a;
   color: white;
   border: none;
   border-radius: 30px;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -2888,6 +2888,7 @@
   }
 
   .vr-contact-form-container {
+    height: 90vh;
     grid-template-columns: 1fr;
     min-height: auto;
   }
@@ -2958,6 +2959,9 @@
     padding: 40px 10px;
   }
 
+  .vr-contact-form-container {
+    height: auto;
+  } 
   .vr-contact-form-image {
     height: 200px;
   }
