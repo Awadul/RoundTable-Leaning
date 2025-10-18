@@ -56,14 +56,15 @@ function SolutionsGrid() {
 function HomePage() {
   useEffect(() => {
     let currentSlide = 0;
-    const totalSlides = 3;
     const track = document.querySelector('.testimonials-track');
+    const slides = document.querySelectorAll('.testimonial-slide');
+    const totalSlides = slides ? slides.length : 0;
     const prevBtn = document.querySelector('.testimonial-prev');
     const nextBtn = document.querySelector('.testimonial-next');
 
     const updateSlider = () => {
-      if (track) {
-        const translateX = -currentSlide * (100 / totalSlides);
+      if (track && totalSlides > 0) {
+        const translateX = -currentSlide * 100;
         track.style.transform = `translateX(${translateX}%)`;
       }
     };
@@ -86,12 +87,110 @@ function HomePage() {
     // Auto-slide every 5 seconds
     const autoSlide = setInterval(nextSlide, 5000);
 
+    // Timeline scroll effect
+    let animationFrameId = null;
+    
+    const handleTimelineScroll = () => {
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
+      
+      animationFrameId = requestAnimationFrame(() => {
+        const timelineFill = document.getElementById('timeline-fill');
+        const timelineContainer = document.querySelector('.timeline-container');
+        
+        console.log('Timeline elements found:', {
+          timelineFill: !!timelineFill,
+          timelineContainer: !!timelineContainer
+        });
+        
+        if (timelineFill && timelineContainer) {
+          const containerRect = timelineContainer.getBoundingClientRect();
+          const containerTop = containerRect.top;
+          const containerHeight = containerRect.height;
+          const windowHeight = window.innerHeight;
+          const currentScroll = window.scrollY;
+          
+          // Debug logging
+          console.log('Scroll debug:', {
+            containerTop,
+            containerHeight,
+            windowHeight,
+            currentScroll,
+            containerBottom: containerTop + containerHeight
+          });
+          
+          // Calculate progress based on scroll position through the timeline
+          let scrollProgress = 0;
+          
+          // Get the timeline section for reference
+          const timelineSection = document.querySelector('.journey-section');
+          if (timelineSection) {
+            const sectionRect = timelineSection.getBoundingClientRect();
+            const sectionTop = sectionRect.top;
+            const sectionHeight = sectionRect.height;
+            
+            // Start filling when section enters viewport (sectionTop <= windowHeight)
+            // Finish filling when section completely leaves viewport (sectionTop + sectionHeight <= 0)
+            const fillStart = sectionTop;
+            const fillEnd = sectionTop + sectionHeight;
+            
+            if (fillStart <= windowHeight && fillEnd >= 0) {
+              // Section is in viewport - calculate progress
+              const scrolledPastStart = Math.max(0, windowHeight - fillStart);
+              const totalFillDistance = fillEnd - fillStart;
+              scrollProgress = Math.min(1, scrolledPastStart / totalFillDistance);
+            } else if (fillEnd < 0) {
+              // Section is completely above viewport - fully filled
+              scrollProgress = 1;
+            }
+            
+            console.log('Timeline section debug:', {
+              sectionTop,
+              sectionHeight,
+              fillStart,
+              fillEnd,
+              scrolledPastStart: Math.max(0, windowHeight - fillStart),
+              totalFillDistance: fillEnd - fillStart,
+              scrollProgress
+            });
+          }
+          
+          const fillHeight = scrollProgress * containerHeight;
+          
+          console.log('Timeline fill calculation:', {
+            scrollProgress,
+            fillHeight,
+            containerTop,
+            containerHeight
+          });
+          
+          // Update the fill height with smooth transition
+          timelineFill.style.height = `${fillHeight}px`;
+          timelineFill.style.backgroundColor = '#008080';
+          
+          // Force a repaint
+          timelineFill.style.display = 'block';
+        } else {
+          console.log('Timeline elements not found!');
+        }
+      });
+    };
+
+    // Add scroll event listener for timeline
+    window.addEventListener('scroll', handleTimelineScroll);
+    handleTimelineScroll(); // Initial call
+
     return () => {
       if (prevBtn && nextBtn) {
         prevBtn.removeEventListener('click', prevSlide);
         nextBtn.removeEventListener('click', nextSlide);
       }
       clearInterval(autoSlide);
+      window.removeEventListener('scroll', handleTimelineScroll);
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
     };
   }, []);
 
@@ -203,43 +302,365 @@ function HomePage() {
           <div className="testimonials-slider">
             <div className="testimonials-track">
               <div className="testimonial-slide">
-                <div className="testimonial-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1 0 1-1 2-2 2s-1.008-.5-1-1c0-1 0-1 1-1 1.25 0 2-.75 2-2V6.972c0-1.25.75-2 2-2h4c1.25 0 2 .75 2 2v8c0 7-4 8-7 8s-7-1-7-8z"/>
-                  </svg>
-                </div>
+                <div className="testimonial-icon"><img src="/logo1.png" alt="Client logo 1" style={{width:'100%',height:'100%',objectFit:'contain'}} /></div>
                 <div className="testimonial-content">
-                  <div className="testimonial-company">Trane Technologies</div>
+                  <div className="testimonial-company">Client One</div>
                   <p>"We are receiving amazing feedback from all over the world and hearing that it is a great tool for existing employees as well as new ones."</p>
                 </div>
               </div>
               
               <div className="testimonial-slide">
-                <div className="testimonial-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1 0 1-1 2-2 2s-1.008-.5-1-1c0-1 0-1 1-1 1.25 0 2-.75 2-2V6.972c0-1.25.75-2 2-2h4c1.25 0 2 .75 2 2v8c0 7-4 8-7 8s-7-1-7-8z"/>
-                  </svg>
-                </div>
+                <div className="testimonial-icon"><img src="/logo2.png" alt="Client logo 2" style={{width:'100%',height:'100%',objectFit:'contain'}} /></div>
                 <div className="testimonial-content">
-                  <div className="testimonial-company">Varian</div>
+                  <div className="testimonial-company">Client Two</div>
                   <p>"It has been very well received. Everyone loved the look and feel of the project and appreciated the advanced interactivity. Most importantly, it will replace a 2 hour instructor lead presentation, and has proven to provide better knowledge retention."</p>
                 </div>
               </div>
 
               <div className="testimonial-slide">
-                <div className="testimonial-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1 0 1-1 2-2 2s-1.008-.5-1-1c0-1 0-1 1-1 1.25 0 2-.75 2-2V6.972c0-1.25.75-2 2-2h4c1.25 0 2 .75 2 2v8c0 7-4 8-7 8s-7-1-7-8z"/>
-                  </svg>
-                </div>
+                <div className="testimonial-icon"><img src="/logo3.png" alt="Client logo 3" style={{width:'100%',height:'100%',objectFit:'contain'}} /></div>
                 <div className="testimonial-content">
-                  <div className="testimonial-company">Walmart</div>
+                  <div className="testimonial-company">Client Three</div>
                   <p>"Your teams are the best partners that we have in the virtual reality space. They are outstandingly reliable, undoubtedly top-talent, and have created the best content that we have ever seen."</p>
+                </div>
+              </div>
+
+              <div className="testimonial-slide">
+                <div className="testimonial-icon"><img src="/logo4.png" alt="Client logo 4" style={{width:'100%',height:'100%',objectFit:'contain'}} /></div>
+                <div className="testimonial-content">
+                  <div className="testimonial-company">Client Four</div>
+                  <p>"From kickoff to launch, the collaboration was seamless and the results exceeded expectations across the board."</p>
                 </div>
               </div>
             </div>
           </div>
         
+        </div>
+      </section>
+
+      {/* Portfolio Slider Section */}
+      <section className="portfolio-section">
+        <div className="container">
+          <div className="portfolio-slider">
+            <div className="portfolio-grid">
+              <div className="portfolio-item">
+                <div className="portfolio-image">
+                  <img src="https://roundtablelearning.com/wp-content/uploads/2025/08/AmerisourceBergin-Customer-Serivce-Empathy-eLearning-thegem-product-justified-square-s.jpg" alt="AmerisourceBergen's Customer Service eLearning" />
+                  <div className="portfolio-overlay">
+                    <div className="portfolio-title">AmerisourceBergen's Customer Service eLearning: Customer Support Training for Empathy</div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="portfolio-item">
+                <div className="portfolio-image">
+                  <img src="https://roundtablelearning.com/wp-content/uploads/2025/04/Roundtable-Learning-Warehouse-VR-Training-thegem-product-justified-square-s.jpg" alt="VR Warehouse Training" />
+                  <div className="portfolio-overlay">
+                    <div className="portfolio-title">VR Warehouse Training: Cutting Turnover While Saving Time & Money</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="portfolio-item">
+                <div className="portfolio-image">
+                  <img src="https://roundtablelearning.com/wp-content/uploads/2025/02/Compass-Digital_Handwashing_B-Roll_4K_01-thegem-product-justified-square-s.jpg" alt="Custom VR Handwashing" />
+                  <div className="portfolio-overlay">
+                    <div className="portfolio-title">Custom VR Handwashing with Advanced Hand Tracking</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="portfolio-item">
+                <div className="portfolio-image">
+                  <img src="https://roundtablelearning.com/wp-content/uploads/2024/07/BNSFlead2-thegem-product-justified-square-s.png" alt="BNSF Train Engine Maintenance" />
+                  <div className="portfolio-overlay">
+                    <div className="portfolio-title">BNSF Train Engine Maintenance VR Training with Haptic Gloves</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="portfolio-dots">
+              <span className="dot active"></span>
+              <span className="dot"></span>
+              <span className="dot"></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Corporate Training Content Section */}
+      <section className="training-content-section">
+        <div className="container">
+          <div className="training-content-header">
+            <h2>Corporate Training Content</h2>
+            <p>Your one-stop shop for all things training. Any modality – any learner.</p>
+          </div>
+          
+          <div className="training-tabs-container">
+            <div className="training-tabs-nav">
+              <button className="training-tab active" data-tab="elearning">
+                ELEARNING
+                <span className="tab-icon">→</span>
+              </button>
+              <button className="training-tab" data-tab="ilt">
+                INSTRUCTOR-LED TRAINING
+                <span className="tab-icon">→</span>
+              </button>
+              <button className="training-tab" data-tab="vilt">
+                VIRTUAL INSTRUCTOR-LED TRAINING
+                <span className="tab-icon">→</span>
+              </button>
+              <button className="training-tab" data-tab="vr">
+                VIRTUAL REALITY TRAINING
+                <span className="tab-icon">→</span>
+              </button>
+              <button className="training-tab" data-tab="ar">
+                AUGMENTED REALITY TRAINING
+                <span className="tab-icon">→</span>
+              </button>
+              <button className="training-tab" data-tab="mr">
+                MIXED REALITY TRAINING
+                <span className="tab-icon">→</span>
+              </button>
+              <button className="training-tab" data-tab="simulation">
+                LEARNING SIMULATION
+                <span className="tab-icon">→</span>
+              </button>
+            </div>
+            
+            <div className="training-content-panel">
+              <div className="training-content-card">
+                <div className="training-content-left">
+                  <h3>eLearning</h3>
+                  <p>Flexible, scalable, and engaging—eLearning delivers training anytime, anywhere. Empower your team with custom courses tailored to their needs, using Articulate 360.</p>
+                  
+                  <ul className="training-benefits">
+                    <li>
+                      <span className="check-icon">✓</span>
+                      <span>25–60% higher employee retention</span>
+                    </li>
+                    <li>
+                      <span className="check-icon">✓</span>
+                      <span>40–60% less training time needed</span>
+                    </li>
+                    <li>
+                      <span className="check-icon">✓</span>
+                      <span>Boost productivity by 72%</span>
+                    </li>
+                  </ul>
+                  
+                  <button className="training-cta-btn">LEARN MORE</button>
+                </div>
+                <div className="training-content-right">
+                  <div className="training-image">
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="eLearning Training" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Mercury XRS Section */}
+      <section className="mercury-section">
+        <div className="container">
+          <div className="mercury-header">
+            <div className="mercury-logo">
+              <img src="https://roundtablelearning.com/wp-content/uploads/elementor/thumbs/Copy-of-mercury-xrs_horizontal_w_tag-qun3gkle3vkiil2fyq0wpu0ebjhh4vk91lsnu3oirk.png" alt="Mercury XRS Logo" />
+            </div>
+            <div className="mercury-monitor">
+              <img src="https://roundtablelearning.com/wp-content/uploads/2024/09/Mercury-Dashboard-2-1-1024x790.png" alt="Mercury Dashboard" />
+            </div>
+            <h2 className="mercury-title">Virtual Training's Most Advanced Data & Analytics Reporting Software</h2>
+          </div>
+          
+          <div className="mercury-content">
+            <div className="mercury-left">
+              <div className="mercury-video">
+                <iframe
+                  src="https://www.youtube.com/embed/Ckn8iav17Ws?controls=1&rel=0&playsinline=0&cc_load_policy=0&autoplay=0&enablejsapi=1"
+                  title="Mercury XRS | Rich Metrics For Your XR Training"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                ></iframe>
+              </div>
+              <div className="mercury-description">
+                <p>
+                  XR Training's first LMS allows you to see the true impact of training with measurable business outcomes and effortless ROI. Roundtable Learning's <strong style={{color: '#008080'}}>Mercury XRS</strong> empowers you to deliver a consistent, high-quality corporate training experience to your employees.
+                </p>
+              </div>
+            </div>
+            
+            <div className="mercury-right">
+              <div className="mercury-accordion">
+                <div className="accordion-item active">
+                  <div className="accordion-header">
+                    <span className="accordion-title">Advanced Data Analytics</span>
+                    <span className="accordion-icon">▼</span>
+                  </div>
+                  <div className="accordion-content">
+                    <p>Track learner performance, measure effectiveness, and refine corporate training programs with data-driven insights.</p>
+                  </div>
+                </div>
+                
+                <div className="accordion-item">
+                  <div className="accordion-header">
+                    <span className="accordion-title">LMS Integration</span>
+                    <span className="accordion-icon">▶</span>
+                  </div>
+                  <div className="accordion-content">
+                    <p>Seamlessly connect with your existing LMS to streamline reporting and consolidate training metrics.</p>
+                  </div>
+                </div>
+                
+                <div className="accordion-item">
+                  <div className="accordion-header">
+                    <span className="accordion-title">Immersive Learning Integration</span>
+                    <span className="accordion-icon">▶</span>
+                  </div>
+                  <div className="accordion-content">
+                    <p>Centralize data from VR, AR, and MR training programs in one user-friendly platform.</p>
+                  </div>
+                </div>
+                
+                <div className="accordion-item">
+                  <div className="accordion-header">
+                    <span className="accordion-title">Flexibility and Scalability</span>
+                    <span className="accordion-icon">▶</span>
+                  </div>
+                  <div className="accordion-content">
+                    <p>Enjoy subscription-based pricing per headset, with unlimited users and scalable solutions for any organization.</p>
+                  </div>
+                </div>
+                
+                <div className="accordion-item">
+                  <div className="accordion-header">
+                    <span className="accordion-title">Customizable Solutions</span>
+                    <span className="accordion-icon">▶</span>
+                  </div>
+                  <div className="accordion-content">
+                    <p>Tailored to your unique training objectives, supported by our in-house experts.</p>
+                  </div>
+                </div>
+                
+                <div className="accordion-item">
+                  <div className="accordion-header">
+                    <span className="accordion-title">Enhanced Learning Outcomes</span>
+                    <span className="accordion-icon">▶</span>
+                  </div>
+                  <div className="accordion-content">
+                    <p>Focus on retention and real-world skill application to achieve meaningful training results.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mercury-cta">
+            <button className="mercury-btn">Start Collecting</button>
+          </div>
+        </div>
+      </section>
+
+      {/* Journey Timeline Section */}
+      <section className="journey-section">
+        <div className="container">
+          <h2 className="journey-title">Your Journey to Learning Excellence Starts Here</h2>
+          
+          <div className="timeline-wrapper">
+            <div className="timeline-container">
+              <div className="timeline-line">
+                <div className="timeline-fill" id="timeline-fill"></div>
+              </div>
+              
+              <div className="timeline-entries">
+                <article className="timeline-entry left-aligned">
+                  <div className="timeline-node">
+                    <div className="timeline-circle">
+                      <span className="timeline-icon">!</span>
+                    </div>
+                    <div className="timeline-step-label">Step 1</div>
+                  </div>
+                  <div className="timeline-content">
+                    <div className="timeline-card">
+                      <h3 className="timeline-title">Identify Your Learning Pain Points</h3>
+                      <p className="timeline-description">
+                        We start by understanding your team's challenges. Together, we'll pinpoint the gaps and plan the best way forward.
+                      </p>
+                    </div>
+                  </div>
+                </article>
+
+                <article className="timeline-entry right-aligned">
+                  <div className="timeline-content">
+                    <div className="timeline-card">
+                      <h3 className="timeline-title">Collaborate with Instructional Design Experts</h3>
+                      <p className="timeline-description">
+                        Our Instructional Designers guide you every step of the way. We'll work with you to find the best learning approach—whether it's VR Training, eLearning, or something else entirely—so your program fits your goals perfectly.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="timeline-node">
+                    <div className="timeline-circle">
+                      <span className="timeline-icon">💡</span>
+                    </div>
+                    <div className="timeline-step-label">Step 2</div>
+                  </div>
+                </article>
+
+                <article className="timeline-entry left-aligned">
+                  <div className="timeline-node">
+                    <div className="timeline-circle">
+                      <span className="timeline-icon">⚙️</span>
+                    </div>
+                    <div className="timeline-step-label">Step 3</div>
+                  </div>
+                  <div className="timeline-content">
+                    <div className="timeline-card">
+                      <h3 className="timeline-title">Onsite Observation & Custom Development</h3>
+                      <p className="timeline-description">
+                        Our developers create engaging content, and we visit your site to capture the details that make your training effective. With rounds of feedback, Q&A, and testing, we fine-tune everything all from our home office in Ohio.
+                      </p>
+                    </div>
+                  </div>
+                </article>
+
+                <article className="timeline-entry right-aligned">
+                  <div className="timeline-content">
+                    <div className="timeline-card">
+                      <h3 className="timeline-title">Seamless Rollout & Continuous Improvement</h3>
+                      <p className="timeline-description">
+                        After a successful pilot, we launch your Corporate Training Solution. Our Mercury XRS software tracks learner performance, allowing you to continuously improve.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="timeline-node">
+                    <div className="timeline-circle">
+                      <span className="timeline-icon">🧠</span>
+                    </div>
+                    <div className="timeline-step-label">Step 4</div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Action Section */}
+      <section className="cta-section">
+        <div className="container">
+          <div className="cta-content">
+            <h2 className="cta-title">Ready To Start Learning?</h2>
+            <h3 className="cta-subtitle">Book A Demo!</h3>
+            <div className="cta-buttons">
+              <button className="cta-btn cta-btn-primary">Get Started</button>
+              <button className="cta-btn cta-btn-secondary">Learn More</button>
+            </div>
+          </div>
         </div>
       </section>
     </>
