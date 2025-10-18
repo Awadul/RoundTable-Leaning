@@ -1,0 +1,704 @@
+.mr-what-section {
+  background: #eaf6f7; /* light teal background similar to screenshot */
+  padding: 72px 0;
+}
+
+.mr-what-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.mr-what-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #0a6c7b; /* matches AR accent family */
+  margin: 0 0 18px 0;
+}
+
+.mr-what-body {
+  max-width: 820px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #2a2f34;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+@media (max-width: 768px) {
+  .mr-what-section { padding: 48px 0; }
+  .mr-what-title { font-size: 1.6rem; }
+  .mr-what-body { font-size: 1rem; }
+}
+
+/* Why MR Delivers Section */
+.mr-why-section {
+  background: #eaf6f7;
+  padding: 72px 0;
+}
+
+.mr-why-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.mr-why-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #0a6c7b;
+  margin: 0 0 18px 0;
+}
+.mr-why-title span { color: #0a6c7b; }
+
+.mr-why-body {
+  max-width: 820px;
+  margin: 0 auto;
+  color: #2a2f34;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  text-align: center;
+}
+
+.mr-why-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin: 24px auto 0 auto;
+  max-width: 820px;
+  text-align: center;
+}
+
+.mr-why-stat { display: flex; flex-direction: column; align-items: center; }
+.mr-why-value { font-size: 2rem; font-weight: 800; color: #13b9c9; line-height: 1; }
+.mr-why-caption { color: #5b6770; font-size: 0.95rem; }
+
+@media (max-width: 768px) {
+  .mr-why-section { padding: 48px 0; }
+  .mr-why-title { font-size: 1.6rem; }
+  .mr-why-body { font-size: 1rem; }
+  .mr-why-stats { grid-template-columns: 1fr; }
+}
+
+/* ===========================
+   Industries We Serve Section
+   =========================== */
+.vr-industries-section {
+  padding: 100px 20px;
+  background: #f8f9fa;
+}
+
+.vr-industries-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.vr-industries-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #0d3a6d;
+  text-align: center;
+  margin-bottom: 50px;
+  line-height: 1.2;
+}
+
+.vr-industries-card {
+  background: linear-gradient(135deg, #0d5e6d 0%, #0a4a56 100%);
+  border-radius: 40px;
+  padding: 60px 50px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+.vr-industries-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+}
+
+.vr-industry-item {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.vr-industry-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.vr-industry-icon {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vr-industry-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.vr-industry-name {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.vr-industry-description {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .vr-industries-section {
+    padding: 80px 30px;
+  }
+
+  .vr-industries-title {
+    font-size: 2.2rem;
+    margin-bottom: 45px;
+  }
+
+  .vr-industries-card {
+    padding: 50px 40px;
+    border-radius: 35px;
+  }
+
+  .vr-industries-grid {
+    gap: 35px;
+  }
+
+  .vr-industry-name {
+    font-size: 1.25rem;
+  }
+
+  .vr-industry-description {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 968px) {
+  .vr-industries-section {
+    padding: 70px 30px;
+  }
+
+  .vr-industries-title {
+    font-size: 2rem;
+    margin-bottom: 40px;
+  }
+
+  .vr-industries-card {
+    padding: 40px 30px;
+    border-radius: 30px;
+  }
+
+  .vr-industries-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .vr-industry-item {
+    padding-bottom: 30px;
+  }
+
+  .vr-industry-icon {
+    width: 70px;
+    height: 70px;
+  }
+
+  .vr-industry-name {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .vr-industries-section {
+    padding: 60px 20px;
+  }
+
+  .vr-industries-title {
+    font-size: 1.8rem;
+    margin-bottom: 35px;
+  }
+
+  .vr-industries-card {
+    padding: 35px 25px;
+    border-radius: 25px;
+  }
+
+  .vr-industries-grid {
+    gap: 25px;
+  }
+
+  .vr-industry-item {
+    padding-bottom: 25px;
+  }
+
+  .vr-industry-icon {
+    width: 65px;
+    height: 65px;
+  }
+
+  .vr-industry-name {
+    font-size: 1.15rem;
+  }
+
+  .vr-industry-description {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .vr-industries-section {
+    padding: 50px 20px;
+  }
+
+  .vr-industries-title {
+    font-size: 1.6rem;
+    margin-bottom: 30px;
+  }
+
+  .vr-industries-card {
+    padding: 30px 20px;
+    border-radius: 20px;
+  }
+
+  .vr-industries-grid {
+    gap: 20px;
+  }
+
+  .vr-industry-item {
+    padding-bottom: 20px;
+  }
+
+  .vr-industry-icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .vr-industry-name {
+    font-size: 1.1rem;
+  }
+
+  .vr-industry-description {
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+}
+
+
+/* Why Choose MR Training Section */
+.xr-types-section {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 100px 0;
+}
+
+.xr-types-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.xr-types-header {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 60px;
+}
+
+.xr-types-title {
+  font-family: 'Roboto', 'Mulish', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 400;
+  line-height: 1.3;
+  color: #1e3a8a;
+  margin: 0 0 24px 0;
+}
+
+.xr-types-intro {
+  font-family: 'Mulish', sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: #333333;
+  margin: 0;
+}
+
+.xr-types-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.xr-type-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.xr-type-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.xr-type-card-title {
+  font-family: 'Roboto', 'Mulish', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.3;
+  color: #1e3a8a;
+  margin: 0;
+}
+
+.xr-type-card-description {
+  font-family: 'Mulish', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333333;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.xr-type-card-image {
+  width: 100%;
+  height: 240px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: auto;
+}
+
+.xr-type-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.xr-type-card:hover .xr-type-card-image img {
+  transform: scale(1.05);
+}
+
+/* ================================
+   Contact Form Section Styles
+   ================================ */
+
+.vr-contact-form-section {
+  padding: 100px 20px 140px 20px;
+  background: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vr-contact-form-container {
+  max-width: 1100px;
+  height: 80vh;
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 0;
+  align-items: stretch;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.vr-contact-form-image {
+  position: relative;
+  overflow: hidden;
+  background: #e0e0e0;
+  min-height: 100%;
+}
+
+.vr-contact-form-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.vr-contact-form-wrapper {
+  background: white;
+  padding: 40px 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vr-contact-form-content {
+  max-width: 550px;
+  width: 100%;
+}
+
+.vr-contact-form-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #004d5e;
+  margin: 0 0 12px 0;
+  line-height: 1.2;
+}
+
+.vr-contact-form-subtitle {
+  font-size: 0.85rem;
+  color: #0e6b82;
+  margin: 0 0 20px 0;
+  line-height: 1.5;
+}
+
+.vr-contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.vr-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.vr-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.vr-form-field-full {
+  grid-column: 1 / -1;
+}
+
+.vr-form-field label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #03708f;
+  display: block;
+}
+
+.vr-form-field input {
+  padding: 10px 12px;
+  font-size: 0.9rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  font-family: 'Helvetica', Arial, sans-serif;
+  background: #f9f9f9;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.vr-form-field input:focus {
+  border-color: #09a6e4;
+  box-shadow: 0 0 0 3px rgba(9, 166, 228, 0.1);
+  background: white;
+}
+
+.vr-form-field input::placeholder {
+  color: #aaa;
+}
+
+.vr-form-progress {
+  margin-top: 10px;
+}
+
+.vr-form-progress-text {
+  font-size: 0.8rem;
+  color: #004359;
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.vr-form-progress-bar {
+  width: 100%;
+  height: 5px;
+  background: #e8e8e8;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.vr-form-progress-fill {
+  height: 100%;
+  background: #006d7a;
+  transition: width 0.4s ease;
+  border-radius: 10px;
+}
+
+.vr-form-submit {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 6px;
+}
+
+.vr-form-submit-btn {
+  padding: 10px 40px;
+  background: #006d7a;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Helvetica', Arial, sans-serif;
+}
+
+.vr-form-submit-btn:hover {
+  background: #005662;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 109, 122, 0.3);
+}
+
+.vr-form-submit-btn:active {
+  transform: translateY(0);
+}
+
+/* Responsive Styles for Contact Form */
+@media (max-width: 1200px) {
+  .vr-contact-form-section {
+    padding: 80px 20px;
+  }
+
+  .vr-contact-form-container {
+    grid-template-columns: 1fr 1.5fr;
+    max-width: 1000px;
+  }
+
+  .vr-contact-form-wrapper {
+    padding: 60px 50px;
+  }
+
+  .vr-contact-form-title {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 968px) {
+  .vr-contact-form-section {
+    padding: 60px 20px;
+  }
+
+  .vr-contact-form-container {
+    height: 90vh;
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .vr-contact-form-image {
+    height: 300px;
+    order: 1;
+  }
+
+  .vr-contact-form-wrapper {
+    padding: 60px 40px;
+    order: 2;
+  }
+
+  .vr-contact-form-title {
+    font-size: 1.7rem;
+  }
+
+  .vr-form-row {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 767px) {
+  .vr-contact-form-section {
+    padding: 50px 15px;
+  }
+
+  .vr-contact-form-image {
+    height: 250px;
+  }
+
+  .vr-contact-form-wrapper {
+    padding: 50px 30px;
+  }
+
+  .vr-contact-form-title {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+  }
+
+  .vr-contact-form-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+  }
+
+  .vr-form-row {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .vr-contact-form {
+    gap: 18px;
+  }
+
+  .vr-form-submit {
+    justify-content: stretch;
+  }
+
+  .vr-form-submit-btn {
+    width: 100%;
+    padding: 14px 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .vr-contact-form-section {
+    padding: 40px 10px;
+  }
+
+  .vr-contact-form-container {
+    height: auto;
+  } 
+  .vr-contact-form-image {
+    height: 200px;
+  }
+
+  .vr-contact-form-wrapper {
+    padding: 40px 20px;
+  }
+
+  .vr-contact-form-title {
+    font-size: 1.3rem;
+  }
+
+  .vr-contact-form-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .vr-form-field label {
+    font-size: 0.9rem;
+  }
+
+  .vr-form-field input {
+    padding: 12px 14px;
+    font-size: 0.95rem;
+  }
+
+  .vr-form-progress-text {
+    font-size: 0.85rem;
+  }
+}

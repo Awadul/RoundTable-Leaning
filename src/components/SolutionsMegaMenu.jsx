@@ -75,8 +75,16 @@ function SolutionsMegaMenu({ open, onClose }) {
                     Augmented Reality Training
                   </Link>
                 </li>
-                <li><a href="https://roundtablelearning.com/mixed-reality-training/">Mixed Reality Training</a></li>
-                <li><a href="https://roundtablelearning.com/mercuryxrs/">Data &amp; Analytics</a></li>
+                <li>
+                  <Link to="/mr-training" onClick={() => onClose?.()}>
+                    Mixed Reality Training
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/data-analysis" onClick={() => onClose?.()}>
+                    Data Analysis & Reporting
+                  </Link>
+                </li>
               </ul>
             </div>
 
@@ -84,7 +92,11 @@ function SolutionsMegaMenu({ open, onClose }) {
               <h3 className="mega-card-title">Instructional Design</h3>
               <p className="mega-card-desc">Scalable learning solutions designed to meet your specific goals.</p>
               <ul className="mega-links">
-                <li><a href="https://roundtablelearning.com/elearning/">eLearning</a></li>
+                <li>
+                  <Link to="/elearning" onClick={() => onClose?.()}>
+                    eLearning
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
