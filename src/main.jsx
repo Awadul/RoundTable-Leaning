@@ -7,6 +7,9 @@ import HomePage from './Pages/HomePage.jsx'
 import ExtendedRealityPage from './Pages/ExtendedRealityPage.jsx'
 import VirtualRealityTraining from './Pages/VirtualRealityTraining.jsx'
 import AugmentedRealityTraining from './Pages/AugmentedRealityTraining.jsx'
+import MixedRealityTraining from './Pages/MixedRealityTraining.jsx'
+import DataAnalysis from './Pages/DataAnalysis.jsx'
+import Elearning from './Pages/Elearning.jsx'
 import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import SolutionsMegaMenu from './components/SolutionsMegaMenu.jsx'
@@ -188,6 +191,9 @@ createRoot(document.getElementById('root')).render(
           <Route path="/extended-reality-training" element={<ExtendedRealityPage />} />
           <Route path="/vr-training" element={<VirtualRealityTraining />} />
           <Route path="/ar-training" element={<AugmentedRealityTraining />} />
+          <Route path="/mr-training" element={<MixedRealityTraining />} />
+          <Route path="/data-analysis" element={<DataAnalysis />} />
+          <Route path="/elearning" element={<Elearning />} />
         </Routes>
       </App>
     </BrowserRouter>

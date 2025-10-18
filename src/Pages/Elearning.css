@@ -1,0 +1,292 @@
+.elearning-page {
+  min-height: 100vh;
+  background: #fff;
+}
+
+
+.elearning-hero {
+  position: relative;
+  width: 100%;
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.elearning-hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, #18c3d1 0%, #075c6c 100%);
+  z-index: 0;
+}
+
+
+.elearning-hero-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+  padding: 0;
+}
+
+.elearning-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  letter-spacing: 0.01em;
+}
+
+.elearning-workforce-section {
+  width: 100%;
+  background: #fff;
+  padding: 64px 0 32px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.workforce-container {
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 24px;
+  text-align: center;
+}
+
+.workforce-title {
+  font-size: 2.1rem;
+  font-weight: 400;
+  color: #18c3d1;
+  letter-spacing: 0.04em;
+  margin-bottom: 18px;
+}
+.workforce-title .light {
+  font-weight: 300;
+  color: #18c3d1;
+}
+.workforce-highlight {
+  font-weight: 500;
+  color: #18c3d1;
+}
+.workforce-subheading {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #808080;
+  margin-bottom: 18px;
+}
+.workforce-desc {
+  font-size: 1.08rem;
+  color: #5e6b75;
+  font-weight: 400;
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+@media (max-width: 600px) {
+  .workforce-title { font-size: 1.2rem; }
+  .workforce-subheading { font-size: 0.98rem; }
+  .workforce-desc { font-size: 0.98rem; }
+}
+
+@media (max-width: 600px) {
+  .elearning-hero-content {
+    padding: 32px 0 24px 0;
+  }
+  .elearning-title {
+    font-size: 2rem;
+  }
+}
+
+/* Tabs Section */
+.elearning-tabs-section {
+  padding: 24px 0 48px;
+  display: flex;
+  justify-content: center;
+}
+.elearning-tabs-container {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 24px;
+}
+.tabs-nav {
+  display: flex;
+  gap: 12px;
+  border-bottom: 1px solid #e6e8ec;
+}
+.tab-button {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  padding: 14px 18px;
+  color: #6b7280;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border-radius: 8px 8px 0 0;
+  cursor: pointer;
+}
+.tab-button.active {
+  color: #101828;
+  background: #fff;
+  border: 1px solid #e6e8ec;
+  border-bottom-color: #fff;
+}
+.tabs-panels {
+  border: 1px solid #e6e8ec;
+  border-top: 0;
+  padding: 24px;
+}
+.intro-paragraph {
+  color: #4b5563;
+  line-height: 1.7;
+  margin: 0 0 16px 0;
+}
+
+/* Training cards grid */
+.training-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 24px;
+}
+.training-card {
+  background: #eaecf0;
+  border-radius: 4px;
+  padding: 40px 20px 45px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.training-card:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(16,24,40,0.08); }
+.card-icon { width: 44px; height: 44px; margin: 0 auto 20px; color: #2c2e3d; }
+.card-icon svg { width: 44px; height: 44px; fill: #2c2e3d; }
+.card-title { font-size: 1rem; font-weight: 700; color: #2c2e3d; margin: 0 0 16px; text-transform: uppercase; letter-spacing: .06em; }
+.card-desc { color: #4b5563; line-height: 1.7; margin: 0; }
+
+@media (max-width: 1024px) {
+  .training-cards { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .training-cards { grid-template-columns: 1fr; }
+}
+
+/* Show, Try, Test */
+.show-try-test-section { padding: 24px 0 60px; }
+.stt-heading-global { text-align: center; color: #0fa3b1; font-weight: 300; font-size: 2.2rem; margin: 0 0 16px; }
+.stt-container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 24px; }
+.stt-card { background: transparent; }
+.stt-title { font-size: 0.95rem; color: #6b7280; margin: 0 0 18px; text-transform: uppercase; letter-spacing: .12em; font-weight: 700; }
+.stt-desc { color: #4b5563; line-height: 2; margin: 0 0 18px; max-width: 680px; }
+.stt-image { display: flex; justify-content: center; }
+.stt-image img { width: 90%; max-width: 700px; height: auto; display: block; border-radius: 4px; }
+@media (max-width: 900px) {
+  .stt-container { grid-template-columns: 1fr; }
+  .stt-image { order: -1; }
+  .stt-image img { width: 100%; max-width: none; }
+}
+
+/* Book Your Demo Section */
+.elearning-book-demo {
+  padding: 56px 0 64px 0;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(180deg, #f7f9fa 0%, #ffffff 100%);
+}
+
+.book-demo-container {
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 24px;
+}
+
+.book-demo-header {
+  text-align: left;
+  margin-bottom: 18px;
+}
+
+.book-demo-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #0a5566;
+  margin: 0 0 8px 0;
+}
+.book-demo-title .light { font-weight: 300; }
+
+.book-demo-subtitle {
+  color: #5e6b75;
+  font-size: 1.05rem;
+  max-width: 760px;
+}
+
+.book-demo-grid {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 32px;
+  align-items: start;
+  margin-top: 16px;
+}
+
+.book-demo-form {
+  background: #fff;
+  padding: 18px 18px 8px 18px;
+}
+
+.book-demo-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+.profile-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0a5566;
+  margin: 6px 0 0 0;
+}
+
+.profile-role {
+  color: #5e6b75;
+}
+
+.profile-socials .social-link {
+  color: #0a66c2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #e8f1fb;
+}
+
+.card-shadow {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.rounded {
+  border-radius: 8px;
+}
+
+@media (max-width: 1024px) {
+  .book-demo-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .book-demo-title { font-size: 1.3rem; }
+  .book-demo-subtitle { font-size: 0.98rem; }
+}
