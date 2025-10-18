@@ -663,6 +663,182 @@ function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* YouTube Section */}
+      <section className="youtube-section">
+        <div className="container">
+          <div className="youtube-content">
+            <div className="youtube-left">
+              <div className="youtube-text">
+                <h2 className="youtube-heading">Browse.</h2>
+                <h2 className="youtube-heading">Learn.</h2>
+                <h2 className="youtube-heading">Innovate.</h2>
+                <p className="youtube-description">
+                  Join us and explore learning excellence on the<br />
+                  Training & Development Channel on YouTube and<br />
+                  browsing our blog.
+                </p>
+                <a href="https://www.youtube.com/channel/UCk2RDjH_Hlb-1d1wwdfsiHg" target="_blank" rel="nofollow" className="youtube-btn">
+                  <svg className="youtube-icon" viewBox="0 0 576 512" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"></path>
+                  </svg>
+                  <span>Visit Us On YouTube</span>
+                </a>
+              </div>
+            </div>
+            <div className="youtube-right">
+              <div className="youtube-main-video">
+                <iframe
+                  className="youtube-iframe"
+                  src="https://www.youtube.com/embed/HcxSJ9IJiGg?controls=1&rel=0&playsinline=0&cc_load_policy=0&autoplay=0&enablejsapi=1"
+                  title="Utilizing HaptX Gloves in VR Training | BNSF Mechanical GEVO Tier IV Training Demo"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                ></iframe>
+              </div>
+              <div className="youtube-thumbnails">
+                <div className="youtube-thumbnail">
+                  <div className="thumbnail-overlay">
+                    <svg className="play-icon" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z"></path>
+                    </svg>
+                  </div>
+                  <img src="https://roundtablelearning.com/wp-content/uploads/2025/01/Why-AR-VR-Projects-Fail_YouTube-Thumbnail.jpg" alt="Why AR & VR Projects Fail" />
+                </div>
+                <div className="youtube-thumbnail">
+                  <div className="thumbnail-overlay">
+                    <svg className="play-icon" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z"></path>
+                    </svg>
+                  </div>
+                  <img src="https://roundtablelearning.com/wp-content/uploads/2025/01/VR-Demo_Georgia-Pacific_Bridge-Crane_YouTube-Thumbnail.jpg" alt="Virtual Reality Bridge Crane" />
+                </div>
+                <div className="youtube-thumbnail">
+                  <div className="thumbnail-overlay">
+                    <svg className="play-icon" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z"></path>
+                    </svg>
+                  </div>
+                  <img src="https://roundtablelearning.com/wp-content/uploads/2025/01/Use-Case_Compass-Digital_Handwashing_YouTube-Thumbnail_02.jpg" alt="Wash Hands Better with VR!" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Blog Section */}
+      <section className="blog-section">
+        <div className="container">
+          <h2 className="blog-title">Explore Our Blog for Helpful Training Tips</h2>
+          
+          <div className="blog-filters">
+            <button className="blog-filter active" data-filter="all">SHOW ALL</button>
+            <button className="blog-filter" data-filter="augmented-reality">AUGMENTED REALITY</button>
+            <button className="blog-filter" data-filter="corporate-training">CORPORATE TRAINING</button>
+            <button className="blog-filter" data-filter="elearning">ELEARNING</button>
+            <button className="blog-filter" data-filter="virtual-reality">VIRTUAL REALITY</button>
+            <button className="blog-filter" data-filter="xrs">XRS</button>
+          </div>
+
+          <div className="blog-grid">
+            <article className="blog-post">
+              <div className="blog-image">
+                <img src="https://roundtablelearning.com/wp-content/uploads/2021/11/AdobeStock_1430326108-thegem-portfolio-metro.jpeg" alt="Training needs analysis framework" />
+              </div>
+              <div className="blog-content">
+                <div className="blog-meta">
+                  <div className="blog-author">
+                    <img src="https://roundtablelearning.com/wp-content/uploads/2025/06/Hanna-Liszniansky_Roundtable-Learning-Headshot_Circle-Crop_07-150x150.png" alt="Hanna Liszniansky" className="author-avatar" />
+                    <span className="author-name">By Hanna Liszniansky</span>
+                  </div>
+                  <span className="blog-date">October 8, 2025</span>
+                </div>
+                <h3 className="blog-post-title">
+                  <a href="https://roundtablelearning.com/is-a-training-needs-analysis-really-worth-it-3-reasons-to-conduct-a-tna/">Is A Training Needs Analysis Really Worth It? 3 Reasons To Conduct A TNA</a>
+                </h3>
+              </div>
+            </article>
+
+            <article className="blog-post">
+              <div className="blog-image">
+                <img src="https://roundtablelearning.com/wp-content/uploads/2025/04/PIT-Trainer-XR_Frame-0361_Small-thegem-portfolio-metro.jpg" alt="Custom VR Training Solutions" />
+              </div>
+              <div className="blog-content">
+                <div className="blog-meta">
+                  <div className="blog-author">
+                    <img src="https://roundtablelearning.com/wp-content/uploads/2025/06/Hanna-Liszniansky_Roundtable-Learning-Headshot_Circle-Crop_07-150x150.png" alt="Hanna Liszniansky" className="author-avatar" />
+                    <span className="author-name">By Hanna Liszniansky</span>
+                  </div>
+                  <span className="blog-date">October 3, 2025</span>
+                </div>
+                <h3 className="blog-post-title">
+                  <a href="https://roundtablelearning.com/custom-vs-off-the-shelf-training-content-which-is-best-for-your-organization/">Custom VR Training vs Off-the-Shelf Solutions: Our Comparison</a>
+                </h3>
+              </div>
+            </article>
+
+            <article className="blog-post">
+              <div className="blog-image">
+                <img src="https://roundtablelearning.com/wp-content/uploads/2025/09/Screenshot-2025-08-27-at-10.42.27-AM-thegem-portfolio-metro.jpg" alt="What is Phygital Training" />
+              </div>
+              <div className="blog-content">
+                <div className="blog-meta">
+                  <div className="blog-author">
+                    <img src="https://roundtablelearning.com/wp-content/uploads/2025/06/Hanna-Liszniansky_Roundtable-Learning-Headshot_Circle-Crop_07-150x150.png" alt="Hanna Liszniansky" className="author-avatar" />
+                    <span className="author-name">By Hanna Liszniansky</span>
+                  </div>
+                  <span className="blog-date">September 19, 2025</span>
+                </div>
+                <h3 className="blog-post-title">
+                  <a href="https://roundtablelearning.com/what-is-phygital/">What Is Phygital?</a>
+                </h3>
+              </div>
+            </article>
+          </div>
+
+          <div className="blog-cta">
+            <a href="https://roundtablelearning.com/resource-center/blog/" className="blog-read-more-btn">READ MORE</a>
+          </div>
+        </div>
+      </section>
+
+      {/* Newsletter Section */}
+      <section className="newsletter-section">
+        <div className="container">
+          <div className="newsletter-content">
+            <div className="newsletter-logo">
+              <img src="/tips-4-trainers-5-1024x1024.gif" alt="Tips 4 Trainers Logo" />
+            </div>
+            <div className="newsletter-form">
+              <h5 className="newsletter-title">Subscribe to our Newsletter</h5>
+              <div className="newsletter-form-container">
+                <form className="newsletter-form-element">
+                  <div className="form-group">
+                    <label htmlFor="email" className="form-label">
+                      Email <span className="required">*</span>
+                    </label>
+                    <div className="form-input-group">
+                      <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        className="form-input" 
+                        placeholder="Enter your email address"
+                        required 
+                      />
+                      <button type="submit" className="form-submit-btn">
+                        Sign Me Up!
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   )
 }

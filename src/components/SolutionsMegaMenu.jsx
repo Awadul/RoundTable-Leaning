@@ -70,7 +70,11 @@ function SolutionsMegaMenu({ open, onClose }) {
                     Virtual Reality Training
                   </Link>
                 </li>
-                <li><a href="https://roundtablelearning.com/augmented-reality-training/">Augmented Reality Training</a></li>
+                <li>
+                  <Link to="/ar-training" onClick={() => onClose?.()}>
+                    Augmented Reality Training
+                  </Link>
+                </li>
                 <li><a href="https://roundtablelearning.com/mixed-reality-training/">Mixed Reality Training</a></li>
                 <li><a href="https://roundtablelearning.com/mercuryxrs/">Data &amp; Analytics</a></li>
               </ul>
