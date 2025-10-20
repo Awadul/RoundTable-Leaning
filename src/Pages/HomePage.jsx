@@ -151,7 +151,78 @@ function HomePage() {
       startAutoSlide();
     }, 1000);
 
-    // Cleanup function
+
+    // Timeline scroll effect
+    const handleTimelineScroll = () => {
+      console.log('Scroll event fired!');
+      
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
+      
+      animationFrameId = requestAnimationFrame(() => {
+        const timelineFill = document.getElementById('timeline-fill');
+        const timelineContainer = document.querySelector('.timeline-container');
+        const timelineSection = document.querySelector('.journey-section');
+        
+        console.log('Timeline elements:', {
+          timelineFill: !!timelineFill,
+          timelineContainer: !!timelineContainer,
+          timelineSection: !!timelineSection
+        });
+        
+        if (timelineFill && timelineContainer && timelineSection) {
+          const sectionRect = timelineSection.getBoundingClientRect();
+          const containerRect = timelineContainer.getBoundingClientRect();
+          const windowHeight = window.innerHeight;
+
+          // Compute how far the viewport bottom has progressed through the container.
+          // This mirrors Elementor's centered timeline where the fill grows from the
+          // container's top as the page scrolls down.
+          const containerTopFromViewport = containerRect.top;
+          const containerHeight = containerRect.height;
+          const viewportBottom = window.scrollY + windowHeight;
+          const containerTopAbs = window.scrollY + containerTopFromViewport;
+
+          // Distance from container top to viewport bottom
+          const distance = viewportBottom - containerTopAbs;
+
+          // Clamp to [0, containerHeight]
+          const clamped = Math.max(0, Math.min(containerHeight, distance));
+
+          timelineFill.style.height = `${clamped}px`;
+          timelineFill.style.top = `0px`;
+          timelineFill.style.backgroundColor = '#20B2AA';
+
+          // Optional lightweight debug
+          // console.log('Timeline fill:', { distance: Math.round(distance), clamped: Math.round(clamped), containerHeight: Math.round(containerHeight) });
+        } else {
+          console.log('Timeline elements not found!');
+        }
+      });
+    };
+
+    // Add scroll event listener for timeline
+    window.addEventListener('scroll', handleTimelineScroll);
+    handleTimelineScroll(); // Initial call
+    
+    // Also use Intersection Observer for more reliable detection
+    const timelineObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          console.log('Timeline section is visible!');
+          handleTimelineScroll();
+        }
+      });
+    }, {
+      threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+    });
+    
+    const timelineSection = document.querySelector('.journey-section');
+    if (timelineSection) {
+      timelineObserver.observe(timelineSection);
+    }
+
     return () => {
       if (prevBtn && nextBtn) {
         prevBtn.removeEventListener('click', prevSlide);
@@ -162,110 +233,10 @@ function HomePage() {
         slider.removeEventListener('mouseleave', () => {});
       }
       stopAutoSlide();
-      if (animationFrameId) {
-        cancelAnimationFrame(animationFrameId);
-      }
-    };
-
-    // Timeline scroll effect
-    const handleTimelineScroll = () => {
-      if (animationFrameId) {
-        cancelAnimationFrame(animationFrameId);
-      }
-      
-      animationFrameId = requestAnimationFrame(() => {
-        const timelineFill = document.getElementById('timeline-fill');
-        const timelineContainer = document.querySelector('.timeline-container');
-        
-        console.log('Timeline elements found:', {
-          timelineFill: !!timelineFill,
-          timelineContainer: !!timelineContainer
-        });
-        
-        if (timelineFill && timelineContainer) {
-          const containerRect = timelineContainer.getBoundingClientRect();
-          const containerTop = containerRect.top;
-          const containerHeight = containerRect.height;
-          const windowHeight = window.innerHeight;
-          const currentScroll = window.scrollY;
-          
-          // Debug logging
-          console.log('Scroll debug:', {
-            containerTop,
-            containerHeight,
-            windowHeight,
-            currentScroll,
-            containerBottom: containerTop + containerHeight
-          });
-          
-          // Calculate progress based on scroll position through the timeline
-          let scrollProgress = 0;
-          
-          // Get the timeline section for reference
-          const timelineSection = document.querySelector('.journey-section');
-          if (timelineSection) {
-            const sectionRect = timelineSection.getBoundingClientRect();
-            const sectionTop = sectionRect.top;
-            const sectionHeight = sectionRect.height;
-            
-            // Start filling when section enters viewport (sectionTop <= windowHeight)
-            // Finish filling when section completely leaves viewport (sectionTop + sectionHeight <= 0)
-            const fillStart = sectionTop;
-            const fillEnd = sectionTop + sectionHeight;
-            
-            if (fillStart <= windowHeight && fillEnd >= 0) {
-              // Section is in viewport - calculate progress
-              const scrolledPastStart = Math.max(0, windowHeight - fillStart);
-              const totalFillDistance = fillEnd - fillStart;
-              scrollProgress = Math.min(1, scrolledPastStart / totalFillDistance);
-            } else if (fillEnd < 0) {
-              // Section is completely above viewport - fully filled
-              scrollProgress = 1;
-            }
-            
-            console.log('Timeline section debug:', {
-              sectionTop,
-              sectionHeight,
-              fillStart,
-              fillEnd,
-              scrolledPastStart: Math.max(0, windowHeight - fillStart),
-              totalFillDistance: fillEnd - fillStart,
-              scrollProgress
-            });
-          }
-          
-          const fillHeight = scrollProgress * containerHeight;
-          
-          console.log('Timeline fill calculation:', {
-            scrollProgress,
-            fillHeight,
-            containerTop,
-            containerHeight
-          });
-          
-          // Update the fill height with smooth transition
-          timelineFill.style.height = `${fillHeight}px`;
-          timelineFill.style.backgroundColor = '#008080';
-          
-          // Force a repaint
-          timelineFill.style.display = 'block';
-        } else {
-          console.log('Timeline elements not found!');
-        }
-      });
-    };
-
-    // Add scroll event listener for timeline
-    window.addEventListener('scroll', handleTimelineScroll);
-    handleTimelineScroll(); // Initial call
-
-    return () => {
-      if (prevBtn && nextBtn) {
-        prevBtn.removeEventListener('click', prevSlide);
-        nextBtn.removeEventListener('click', nextSlide);
-      }
-      clearInterval(autoSlide);
       window.removeEventListener('scroll', handleTimelineScroll);
+      if (timelineObserver) {
+        timelineObserver.disconnect();
+      }
       if (animationFrameId) {
         cancelAnimationFrame(animationFrameId);
       }
