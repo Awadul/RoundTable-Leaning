@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 function AboutMegaMenu({ open, onClose }) {
   const overlayRef = useRef(null)
@@ -56,13 +57,13 @@ function AboutMegaMenu({ open, onClose }) {
           </div>
 
           <div className="mega-grid about-grid">
-            <a className="mega-card about hoverable" href="https://roundtablelearning.com/about/">
+            <Link className="mega-card about hoverable" to="/who-we-are" onClick={onClose}>
               <div className="about-card-content">
                 <h3 className="mega-card-title">Who We Are</h3>
                 <p className="mega-card-desc">We are the Future of Learning.</p>
               </div>
               <img src="/r.png" alt="Roundtable Logo" className="about-card-image" />
-            </a>
+            </Link>
 
             <a className="mega-card about hoverable" href="https://roundtablelearning.com/case-studies/">
               <div className="about-card-content">
