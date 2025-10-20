@@ -479,6 +479,38 @@
   margin-top: 1rem;
 }
 
+/* Small Hero Logo Slider */
+.hero-logo-slider {
+  margin-top: 10px;
+  max-width: 520px; /* keep compact on the left */
+}
+
+.hero-logo-slider .swiper {
+  width: 100%;
+}
+
+.hero-logo-slide {
+  width: auto !important; /* allow auto width for continuous scroll */
+}
+
+.hero-logo-figure {
+  margin: 0;
+  padding: 0;
+}
+
+.hero-logo-image {
+  height: 28px;
+  width: auto;
+  object-fit: contain;
+  opacity: 1;
+  filter: none;
+}
+
+@media (max-width: 768px) {
+  .hero-logo-slider { max-width: 360px; }
+  .hero-logo-image { height: 22px; }
+}
+
 /* Hero Visuals */
 .hero-visuals {
   position: relative;

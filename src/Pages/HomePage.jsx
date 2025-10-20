@@ -1,4 +1,7 @@
 import { useEffect } from 'react'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Autoplay } from 'swiper/modules'
+import 'swiper/css'
 
 function SolutionsCard({ title, description, imageAlt, imageSrc }) {
   return (
@@ -217,6 +220,41 @@ function HomePage() {
               <p className="trust-indicator">
                 trusted by 50+ Fortune 500 organizations
               </p>
+              <div className="hero-logo-slider" aria-label="Client Logos Carousel">
+                <Swiper
+                  modules={[Autoplay]}
+                  autoplay={{ delay: 0, disableOnInteraction: false }}
+                  loop={true}
+                  speed={2000}
+                  slidesPerView={'auto'}
+                  spaceBetween={16}
+                  allowTouchMove={false}
+                >
+                  {[
+                    'https://roundtablelearning.com/wp-content/uploads/elementor/thumbs/Amazon-1-qvcrfvbuv2iccxlmhxgg5ei8fnp3yok8cwhrt2ldz4.png',
+                    'https://roundtablelearning.com/wp-content/uploads/elementor/thumbs/Walmart-qun3msazag2h1hdciddvxpn3ibmqdw8rxmbb1h7chs.png',
+                    'https://roundtablelearning.com/wp-content/uploads/elementor/thumbs/BNSF-qun5n16el0yveiffn3ml2zbj7hjd0e2277fty4308w.png',
+                    'https://roundtablelearning.com/wp-content/uploads/elementor/thumbs/Kellanova-Logo-qun2uat2672n6wqxuk3wvef7ey1a445mcmkkglfv28.png',
+                    'https://roundtablelearning.com/wp-content/uploads/elementor/thumbs/Lincoln_Electric_logo-qvcsa0zg4psiujsnegqjnajmjp21x3a7i5zl3nvocg.png',
+                    'https://roundtablelearning.com/wp-content/uploads/elementor/thumbs/COX-qun2rhaho37od0uebc87e41f9bxn0sylyo44mpmdq8.png',
+                    'https://roundtablelearning.com/wp-content/uploads/elementor/thumbs/Compass-Digital_Primary_Full-Color-qun2ta5crnogm486sm9go5o88x1yrx437l4mqsy7sw.png',
+                    'https://roundtablelearning.com/wp-content/uploads/elementor/thumbs/AmerisourceBergen_logo-qvcs3xz1wbgppemrxc2h0bt84x1j3m4r01zga6wem8.png',
+                    'https://roundtablelearning.com/wp-content/uploads/elementor/thumbs/Avery_Dennison_Logo-qvcs4zklhow6lt45tsbjs2bnwbw7nia0h82vh9cnpc.png',
+                    'https://roundtablelearning.com/wp-content/uploads/elementor/thumbs/Burger-King-Logo-1994-qvcs68oulqly33amibtn3qxsetptwz94nfe6ijhreo.png',
+                    'https://roundtablelearning.com/wp-content/uploads/elementor/thumbs/Coca-Cola_logo.svg-qvcs78eptfyuc9uqpr9gqhxazgts1h6xgc6mr20su8.png',
+                    'https://roundtablelearning.com/wp-content/uploads/elementor/thumbs/CSX-qvcs8n602hwbr7t0hd7bh54729vll4sfnbeunzxji8.png',
+                    'https://roundtablelearning.com/wp-content/uploads/elementor/thumbs/Georgia-Pacific_logo.svg-qvcs9359aoi78l5sw23z5j315tou7zjvdii3tp9ukg.png',
+                    'https://roundtablelearning.com/wp-content/uploads/elementor/thumbs/manpowergroup-qvcsbesw6xopxvsabk9rtfz2148i91rzd0kbjbtt6o.png',
+                    'https://roundtablelearning.com/wp-content/uploads/elementor/thumbs/Air-Products-qvw0jbq3dp65lg7witzvqhn5r75dx33z752c8ctlvk.png',
+                  ].map((src, idx) => (
+                    <SwiperSlide key={idx} className="hero-logo-slide">
+                      <figure className="hero-logo-figure">
+                        <img src={src} alt="client logo" className="hero-logo-image" />
+                      </figure>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </div>
             </div>
             
             <div className="hero-visuals">
