@@ -794,6 +794,73 @@ function WhoWeAre() {
           </div>
         </div>
       </section>
+
+      {/* Newsletter Subscription Section */}
+      <section className="elementor-section elementor-top-section elementor-element elementor-element-3675e215 elementor-section-content-middle elementor-section-boxed elementor-section-height-default elementor-section-height-default wpr-particle-no wpr-jarallax-no wpr-parallax-no wpr-sticky-section-no newsletter-section" data-id="3675e215" data-element_type="section" data-settings='{"background_background":"classic"}'>
+        <div className="elementor-container elementor-column-gap-thegem">
+          <div className="elementor-row">
+            <div className="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-77dcaaf5" data-id="77dcaaf5" data-element_type="column" data-settings='{"thegem_inline_elements":"yes"}'>
+              <div className="elementor-widget-wrap elementor-element-populated">
+                <div className="elementor-element elementor-element-7be77d7 flex-horizontal-align-default flex-horizontal-align-tablet-default flex-horizontal-align-mobile-default flex-vertical-align-default flex-vertical-align-tablet-default flex-vertical-align-mobile-default elementor-widget elementor-widget-thegem-styled-textbox" data-id="7be77d7" data-element_type="widget" data-settings='{"thegem_elementor_preset":"basic-right-aligned"}' data-widget_type="thegem-styled-textbox.default">
+                  <div className="elementor-widget-container">
+                    <div className="gem-textbox styled-textbox-basic-right-aligned">
+                      <div className="gem-textbox-top gem-textbox-top-none default-fill"></div>
+                      <div className="gem-textbox-inner">
+                        <div className="gem-textbox-content default-background icon-top gem-textbox-icon-horizontal-left gem-textbox-icon-image-wrapping-inline">
+                          <div className="gem-texbox-icon-image-wrapper">
+                            <div className="gem-image">
+                              <span>
+                                <picture>
+                                  <source data-lazy-srcSet="https://roundtablelearning.com/wp-content/uploads/2023/05/blocks-image-235.png.webp" type="image/webp" srcSet="https://roundtablelearning.com/wp-content/uploads/2023/05/blocks-image-235.png.webp" />
+                                  <img width="124" height="124" src="https://roundtablelearning.com/wp-content/uploads/2023/05/blocks-image-235.png" className="attachment-full size-full wp-image-34021 webpexpress-processed entered lazyloaded" alt="" data-lazy-src="https://roundtablelearning.com/wp-content/uploads/2023/05/blocks-image-235.png" data-ll-status="loaded" />
+                                  <noscript><img width="124" height="124" src="https://roundtablelearning.com/wp-content/uploads/2023/05/blocks-image-235.png" className="attachment-full size-full wp-image-34021 webpexpress-processed" alt="" /></noscript>
+                                </picture>
+                              </span>
+                            </div>
+                          </div>
+                          <div className="gem-texbox-text-wrapper">
+                            <h3 className="gem-textbox-title title-h3 bold">
+                              SUBSCRIBE TO OUR
+                            </h3>
+                            <div className="gem-textbox-description gem-text-output">
+                              <div className="title-h1"><span style={{color: '#2c2e3d'}}>NEWSLETTER</span></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="gem-textbox-bottom gem-textbox-bottom-none default-fill"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-245c6210" data-id="245c6210" data-element_type="column" data-settings='{"thegem_inline_elements":"yes"}'>
+              <div className="elementor-widget-wrap elementor-element-populated">
+                <div className="elementor-element elementor-element-a2a3690 flex-horizontal-align-default flex-horizontal-align-tablet-default flex-horizontal-align-mobile-default flex-vertical-align-default flex-vertical-align-tablet-default flex-vertical-align-mobile-default elementor-widget elementor-widget-html" data-id="a2a3690" data-element_type="widget" data-widget_type="html.default">
+                  <div className="newsletter-form-container">
+                    <h2 className="newsletter-title">Get News and Resources Straight To Your Inbox!</h2>
+                    <form className="newsletter-form">
+                      <div className="newsletter-form-group">
+                        <label htmlFor="newsletter-email" className="newsletter-label">Email*</label>
+                        <input 
+                          type="email" 
+                          id="newsletter-email" 
+                          className="newsletter-input" 
+                          placeholder="Enter your email address"
+                          required 
+                        />
+                      </div>
+                      <button type="submit" className="newsletter-button">
+                        Sign Me Up!
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   )
 }
