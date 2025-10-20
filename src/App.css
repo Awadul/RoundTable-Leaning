@@ -1119,22 +1119,37 @@
   margin: 0 auto;
   overflow: hidden;
   padding: 0 60px;
+  min-height: 200px; /* Ensure minimum height */
 }
 
 .testimonials-track {
   display: flex;
-  transition: transform 0.5s ease-in-out;
-  width: 400%; /* 4 slides = 400% width */
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  min-height: 300px;
 }
 
 .testimonial-slide {
-  width: 25%; /* 100% / 4 slides = 25% each */
+  width: 100%;
+  max-width: 800px;
   flex-shrink: 0;
   padding: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.testimonial-slide.active {
+  opacity: 1;
 }
 
 .testimonial-icon {
