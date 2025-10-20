@@ -59,27 +59,52 @@ function SolutionsGrid() {
 function HomePage() {
   useEffect(() => {
     let currentSlide = 0;
+    let isPaused = false;
+    let animationFrameId = null; // Move this to the top
     const track = document.querySelector('.testimonials-track');
     const slides = document.querySelectorAll('.testimonial-slide');
     const totalSlides = slides ? slides.length : 0;
     const prevBtn = document.querySelector('.testimonial-prev');
     const nextBtn = document.querySelector('.testimonial-next');
+    const slider = document.querySelector('.testimonials-slider');
 
     const updateSlider = () => {
-      if (track && totalSlides > 0) {
-        const translateX = -currentSlide * 100;
-        track.style.transform = `translateX(${translateX}%)`;
+      if (slides && totalSlides > 0) {
+        // Ensure currentSlide is within bounds
+        if (currentSlide >= totalSlides) {
+          currentSlide = 0;
+        } else if (currentSlide < 0) {
+          currentSlide = totalSlides - 1;
+        }
+        
+        // Remove active class from all slides
+        slides.forEach((slide, index) => {
+          if (slide) {
+            slide.classList.remove('active');
+          }
+        });
+        
+        // Add active class to current slide
+        if (slides[currentSlide]) {
+          slides[currentSlide].classList.add('active');
+        }
+        
+        console.log(`Testimonial: currentSlide=${currentSlide}, totalSlides=${totalSlides}`);
       }
     };
 
     const nextSlide = () => {
-      currentSlide = (currentSlide + 1) % totalSlides;
-      updateSlider();
+      if (totalSlides > 0) {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateSlider();
+      }
     };
 
     const prevSlide = () => {
-      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-      updateSlider();
+      if (totalSlides > 0) {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        updateSlider();
+      }
     };
 
     if (prevBtn && nextBtn) {
@@ -87,12 +112,62 @@ function HomePage() {
       nextBtn.addEventListener('click', nextSlide);
     }
 
-    // Auto-slide every 5 seconds
-    const autoSlide = setInterval(nextSlide, 5000);
+    // Auto-slide function with pause support
+    let autoSlideInterval;
+    
+    const startAutoSlide = () => {
+      // Only start if we have slides and track
+      if (totalSlides > 0 && track) {
+        autoSlideInterval = setInterval(() => {
+          if (!isPaused && totalSlides > 0) {
+            nextSlide();
+          }
+        }, 8000);
+      }
+    };
+
+    const stopAutoSlide = () => {
+      if (autoSlideInterval) {
+        clearInterval(autoSlideInterval);
+      }
+    };
+
+    // Pause on hover
+    if (slider) {
+      slider.addEventListener('mouseenter', () => {
+        isPaused = true;
+      });
+      
+      slider.addEventListener('mouseleave', () => {
+        isPaused = false;
+      });
+    }
+
+    // Initialize the slider
+    updateSlider();
+    
+    // Start auto-slide with a small delay to ensure DOM is ready
+    setTimeout(() => {
+      startAutoSlide();
+    }, 1000);
+
+    // Cleanup function
+    return () => {
+      if (prevBtn && nextBtn) {
+        prevBtn.removeEventListener('click', prevSlide);
+        nextBtn.removeEventListener('click', nextSlide);
+      }
+      if (slider) {
+        slider.removeEventListener('mouseenter', () => {});
+        slider.removeEventListener('mouseleave', () => {});
+      }
+      stopAutoSlide();
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
+    };
 
     // Timeline scroll effect
-    let animationFrameId = null;
-    
     const handleTimelineScroll = () => {
       if (animationFrameId) {
         cancelAnimationFrame(animationFrameId);
@@ -342,32 +417,32 @@ function HomePage() {
               <div className="testimonial-slide">
                 <div className="testimonial-icon"><img src="/logo1.png" alt="Client logo 1" style={{width:'100%',height:'100%',objectFit:'contain'}} /></div>
                 <div className="testimonial-content">
-                  <div className="testimonial-company">Client One</div>
-                  <p>"We are receiving amazing feedback from all over the world and hearing that it is a great tool for existing employees as well as new ones."</p>
+                  <div className="testimonial-company">Cox Communications</div>
+                  <p>"They have been such a great partner when it comes to working with our budget and project teams. Roundtable’s design team is able to come up with great quality programs that are as good, if not better, than any other ones I have seen in the industry. The values Roundtable has aligns with those at Cox."</p>
                 </div>
               </div>
               
               <div className="testimonial-slide">
                 <div className="testimonial-icon"><img src="/logo2.png" alt="Client logo 2" style={{width:'100%',height:'100%',objectFit:'contain'}} /></div>
                 <div className="testimonial-content">
-                  <div className="testimonial-company">Client Two</div>
-                  <p>"It has been very well received. Everyone loved the look and feel of the project and appreciated the advanced interactivity. Most importantly, it will replace a 2 hour instructor lead presentation, and has proven to provide better knowledge retention."</p>
+                  <div className="testimonial-company">Trane Technologies</div>
+                  <p>"We are receiving amazing feedback from all over the world and hearing that it is a great tool for existing employees as well as new ones."</p>
                 </div>
               </div>
 
               <div className="testimonial-slide">
                 <div className="testimonial-icon"><img src="/logo3.png" alt="Client logo 3" style={{width:'100%',height:'100%',objectFit:'contain'}} /></div>
                 <div className="testimonial-content">
-                  <div className="testimonial-company">Client Three</div>
-                  <p>"Your teams are the best partners that we have in the virtual reality space. They are outstandingly reliable, undoubtedly top-talent, and have created the best content that we have ever seen."</p>
+                  <div className="testimonial-company">Varian</div>
+                  <p>"It has been very well received. Everyone loved the look and feel of the project and appreciated the advanced interactivity. Most importantly, it will replace a 2 hour instructor lead presentation, and has proven to provide better knowledge retention."</p>
                 </div>
               </div>
 
               <div className="testimonial-slide">
                 <div className="testimonial-icon"><img src="/logo4.png" alt="Client logo 4" style={{width:'100%',height:'100%',objectFit:'contain'}} /></div>
                 <div className="testimonial-content">
-                  <div className="testimonial-company">Client Four</div>
-                  <p>"From kickoff to launch, the collaboration was seamless and the results exceeded expectations across the board."</p>
+                  <div className="testimonial-company">Walmart</div>
+                  <p>"Your teams are the best partners that we have in the virtual reality space. They are outstandingly reliable, undoubtedly top-talent, and have created the best content that we have ever seen."</p>
                 </div>
               </div>
             </div>
