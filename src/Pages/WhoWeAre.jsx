@@ -11,6 +11,43 @@ function WhoWeAre() {
   const [hasAnimated, setHasAnimated] = useState(false)
   const [animatedValues, setAnimatedValues] = useState([])
 
+  // Form state
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    jobTitle: '',
+    company: '',
+    interests: [],
+    message: '',
+    hearAbout: ''
+  })
+
+  const handleInputChange = (e) => {
+    const { name, value, type, checked } = e.target
+    
+    if (type === 'checkbox') {
+      setFormData(prev => ({
+        ...prev,
+        interests: checked 
+          ? [...prev.interests, value]
+          : prev.interests.filter(item => item !== value)
+      }))
+    } else {
+      setFormData(prev => ({
+        ...prev,
+        [name]: value
+      }))
+    }
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log('Form submitted:', formData)
+    // Here you would typically send the data to your backend
+    alert('Thank you for your submission! We will contact you soon.')
+  }
+
   const slides = [
     {
       id: 1,
@@ -581,25 +618,142 @@ function WhoWeAre() {
             <div className="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-7313812" data-id="7313812" data-element_type="column" data-settings='{"thegem_inline_elements":"yes"}'>
               <div className="elementor-widget-wrap elementor-element-populated">
                 <div className="elementor-element elementor-element-09989aa flex-horizontal-align-default flex-horizontal-align-tablet-default flex-horizontal-align-mobile-default flex-vertical-align-default flex-vertical-align-tablet-default flex-vertical-align-mobile-default elementor-widget elementor-widget-html" data-id="09989aa" data-element_type="widget" data-widget_type="html.default">
-                  <script type="text/javascript" charset="utf-8" fetchPriority="high" src="//js.hsforms.net/forms/embed/v2.js" data-rocket-status="executed"></script>
-                  <script src="data:text/javascript;base64,CiAgaGJzcHQuZm9ybXMuY3JlYXRlKHsKICAgIHBvcnRhbElkOiAiODE5MjA3NSIsCiAgICBmb3JtSWQ6ICI2Yjc4ZjZlOS00NzZkLTQ0ZWItYTM3ZS0wNzQ4ODAwNjczMzAiCiAgfSk7Cg==" data-hubspot-rendered="true" data-rocket-status="executed">
-                    hbspt.forms.create({{
-                      portalId: "8192075",
-                      formId: "6b78f6e9-476d-44eb-a37e-074880067330"
-                    }});
-                  </script>
-                  <div id="hbspt-form-fc8b0801-3e51-4d09-9c4e-f1e6aef3351c" className="hbspt-form" data-hs-forms-root="true">
-                    <iframe id="hs-form-iframe-1" className="hs-form-iframe" title="Form 1" scrolling="no" width="100%" style={{position: 'static', border: 'none', display: 'block', overflow: 'hidden', width: '100%', height: '952.797px'}} height="952.796875"></iframe>
-                    <div id="hs-outer-captcha-target-1" style={{display: 'none', width: '0px', height: '0px'}}>
-                      <div className="grecaptcha-badge" data-style="inline" style={{width: '256px', height: '60px', boxShadow: 'gray 0px 0px 5px'}}>
-                        <div className="grecaptcha-logo">
-                          <iframe title="reCAPTCHA" width="256" height="60" role="presentation" name="a-euc8c7p4crsb" frameBorder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation" src="https://www.google.com/recaptcha/enterprise/anchor?ar=1&k=6Ld_ad8ZAAAAAAqr0ePo1dUfAi0m4KPkCMQYwPPm&co=aHR0cHM6Ly9yb3VuZHRhYmxlbGVhcm5pbmcuY29tOjQ0Mw..&hl=en&v=KmpMK968ITgSdSG_2lbUmd1o&size=invisible&badge=inline&anchor-ms=20000&execute-ms=15000&cb=cl3nurd2dhns"></iframe>
+                  <div className="custom-form-container">
+                    <form onSubmit={handleSubmit} className="contact-form">
+                      {/* Row 1: First Name and Last Name */}
+                      <div className="form-row">
+                        <div className="form-field">
+                          <label htmlFor="firstName">First name<span className="required">*</span></label>
+                          <input
+                            type="text"
+                            id="firstName"
+                            name="firstName"
+                            value={formData.firstName}
+                            onChange={handleInputChange}
+                            required
+                          />
                         </div>
-                        <div className="grecaptcha-error"></div>
-                        <textarea id="g-recaptcha-response" name="g-recaptcha-response" className="g-recaptcha-response" style={{width: '250px', height: '40px', border: '1px solid rgb(193, 193, 193)', margin: '10px 25px', padding: '0px', resize: 'none', display: 'none'}}></textarea>
+                        <div className="form-field">
+                          <label htmlFor="lastName">Last name<span className="required">*</span></label>
+                          <input
+                            type="text"
+                            id="lastName"
+                            name="lastName"
+                            value={formData.lastName}
+                            onChange={handleInputChange}
+                            required
+                          />
+                        </div>
                       </div>
-                      <iframe style={{display: 'none'}}></iframe>
-                    </div>
+
+                      {/* Row 2: Email and Job Title */}
+                      <div className="form-row">
+                        <div className="form-field">
+                          <label htmlFor="email">Email<span className="required">*</span></label>
+                          <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleInputChange}
+                            required
+                          />
+                        </div>
+                        <div className="form-field">
+                          <label htmlFor="jobTitle">Job title<span className="required">*</span></label>
+                          <input
+                            type="text"
+                            id="jobTitle"
+                            name="jobTitle"
+                            value={formData.jobTitle}
+                            onChange={handleInputChange}
+                            required
+                          />
+                        </div>
+                      </div>
+
+                      {/* Row 3: Company Name (full width) */}
+                      <div className="form-row">
+                        <div className="form-field full-width">
+                          <label htmlFor="company">Company name<span className="required">*</span></label>
+                          <input
+                            type="text"
+                            id="company"
+                            name="company"
+                            value={formData.company}
+                            onChange={handleInputChange}
+                            required
+                          />
+                        </div>
+                      </div>
+
+                      {/* Row 4: Interests and Message */}
+                      <div className="form-row">
+                        <div className="form-field">
+                          <label>I am interested in utilizing<span className="required">*</span></label>
+                          <div className="checkbox-group">
+                            {[
+                              'Virtual Reality',
+                              'Augmented Reality', 
+                              'XR Analytics & Reporting',
+                              'eLearning',
+                              'Video Learning',
+                              'Instructor Led Training'
+                            ].map((interest) => (
+                              <label key={interest} className="checkbox-label">
+                                <input
+                                  type="checkbox"
+                                  name="interests"
+                                  value={interest}
+                                  checked={formData.interests.includes(interest)}
+                                  onChange={handleInputChange}
+                                />
+                                <span className="checkmark"></span>
+                                {interest}
+                              </label>
+                            ))}
+                          </div>
+                        </div>
+                        <div className="form-field">
+                          <label htmlFor="message">Tell Us About Your Project</label>
+                          <textarea
+                            id="message"
+                            name="message"
+                            value={formData.message}
+                            onChange={handleInputChange}
+                            rows="6"
+                          />
+                        </div>
+                      </div>
+
+                      {/* Row 5: How did you hear about us */}
+                      <div className="form-row">
+                        <div className="form-field full-width">
+                          <label htmlFor="hearAbout">How did you hear about us?<span className="required">*</span></label>
+                          <select
+                            id="hearAbout"
+                            name="hearAbout"
+                            value={formData.hearAbout}
+                            onChange={handleInputChange}
+                            required
+                          >
+                            <option value="">Please Select</option>
+                            <option value="google">Google Search</option>
+                            <option value="linkedin">LinkedIn</option>
+                            <option value="referral">Referral</option>
+                            <option value="event">Event/Conference</option>
+                            <option value="other">Other</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      {/* Submit Button */}
+                      <div className="form-submit">
+                        <button type="submit" className="submit-btn">
+                          Book Your Demo!
+                        </button>
+                      </div>
+                    </form>
                   </div>
                 </div>
               </div>
