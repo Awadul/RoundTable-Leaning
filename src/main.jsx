@@ -121,7 +121,8 @@ function App({ children }) {
               >
                 SOLUTIONS
               </a>
-              <a
+              {/* Temporarily hidden RESOURCE CENTER link */}
+              {/* <a
                 href="#resources"
                 ref={resourceBtnRef}
                 className={`nav-link ${resourceOpen ? 'active' : ''}`}
@@ -136,7 +137,7 @@ function App({ children }) {
                 role="button"
               >
                 RESOURCE CENTER
-              </a>
+              </a> */}
               <a
                 href="#about"
                 ref={aboutBtnRef}
