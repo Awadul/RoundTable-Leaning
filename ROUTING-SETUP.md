@@ -1,4 +1,4 @@
-# Routing Setup Complete! 🎉
+# Routing Setup Complete! 
 
 ## What Was Implemented
 
