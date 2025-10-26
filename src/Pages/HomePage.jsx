@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay } from 'swiper/modules'
 import 'swiper/css'
@@ -57,6 +57,140 @@ function SolutionsGrid() {
 }
 
 function HomePage() {
+  const [portfolioPage, setPortfolioPage] = useState(0)
+  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200)
+  
+  const portfolioItems = [
+    {
+      image: "https://roundtablelearning.com/wp-content/uploads/2025/08/AmerisourceBergin-Customer-Serivce-Empathy-eLearning-thegem-product-justified-square-s.jpg",
+      title: "AmerisourceBergen's Customer Service eLearning: Customer Support Training for Empathy",
+      alt: "AmerisourceBergen's Customer Service eLearning",
+      link: "https://roundtablelearning.com/pf/amerisourcebergens-customer-service-elearning-customer-support-training-for-empathy/"
+    },
+    {
+      image: "https://roundtablelearning.com/wp-content/uploads/2025/04/Roundtable-Learning-Warehouse-VR-Training-thegem-product-justified-square-s.jpg",
+      title: "VR Warehouse Training: Cutting Turnover While Saving Time & Money",
+      alt: "VR Warehouse Training",
+      link: "https://roundtablelearning.com/pf/vr-warehouse-training-cutting-turnover-while-saving-time-money/"
+    },
+    {
+      image: "https://roundtablelearning.com/wp-content/uploads/2025/02/Compass-Digital_Handwashing_B-Roll_4K_01-thegem-product-justified-square-s.jpg",
+      title: "Custom VR Handwashing with Advanced Hand Tracking",
+      alt: "Custom VR Handwashing",
+      link: "https://roundtablelearning.com/pf/vr-handwashing-with-advanced-hand-tracking/"
+    },
+    {
+      image: "https://roundtablelearning.com/wp-content/uploads/2024/07/BNSFlead2-thegem-product-justified-square-s.png",
+      title: "BNSF Train Engine Maintenance VR Training with Haptic Gloves",
+      alt: "BNSF Train Engine Maintenance",
+      link: "https://roundtablelearning.com/pf/bnsf-train-engine-maintenance-vr-training-with-haptic-gloves/"
+    },
+    {
+      image: "https://roundtablelearning.com/wp-content/uploads/2024/12/Roundtable-Learning-Virtual-Sales-Training-Revs-Up-Kellanova-Mars-Onboarding-1-thegem-product-justified-square-s.jpg",
+      title: "Kellanova's Virtual Sales Training with Immersive VR",
+      alt: "Kellanova's Virtual Sales Training",
+      link: "https://roundtablelearning.com/pf/kellanova/"
+    },
+    {
+      image: "https://roundtablelearning.com/wp-content/uploads/2024/11/R62_8279-thegem-product-justified-square-s.jpg",
+      title: "Service Technician VR Training for Telecommunications",
+      alt: "Service Technician VR Training",
+      link: "https://roundtablelearning.com/pf/service-technician-vr-training-for-telecommunications/"
+    },
+    {
+      image: "https://roundtablelearning.com/wp-content/uploads/2023/11/ParkEntrance-thegem-product-justified-square-s.jpg",
+      title: "Lincoln Electric's Voyage Arc | Gamified Learning for the Next Generation of Learners",
+      alt: "Lincoln Electric's Voyage Arc",
+      link: "https://roundtablelearning.com/pf/lincoln-electrics-voyage-arc-gamified-learning-for-the-next-generation-of-learners/"
+    },
+    {
+      image: "https://roundtablelearning.com/wp-content/uploads/2023/07/1574092740174-thegem-product-justified-square-s.jpeg",
+      title: "Superior Beverage Blended Learning Warehouse Program",
+      alt: "Superior Beverage Warehouse Program",
+      link: "https://roundtablelearning.com/pf/superior-beverage-blended-learning-warehouse-program/"
+    },
+    {
+      image: "https://roundtablelearning.com/wp-content/uploads/2023/07/sally-beauty-01-thegem-product-justified-square-s.png",
+      title: "Sally Beauty Gamified eLearning",
+      alt: "Sally Beauty eLearning",
+      link: "https://roundtablelearning.com/pf/sally-beauty-gamified-elearning/"
+    },
+    {
+      image: "https://roundtablelearning.com/wp-content/uploads/2023/07/Amusement-1-thegem-product-justified-square-s.png",
+      title: "Six Flags Point of Sale AR Training",
+      alt: "Six Flags AR Training",
+      link: "https://roundtablelearning.com/pf/six-flags-point-of-sale-ar-training/"
+    },
+    {
+      image: "https://roundtablelearning.com/wp-content/uploads/2023/07/AdobeStock_289629686-e1689872153902-thegem-product-justified-square-s.jpeg",
+      title: "Lincoln Financial Group's Blended Learning Program",
+      alt: "Lincoln Financial Learning Program",
+      link: "https://roundtablelearning.com/pf/lincoln-financial-groups-blended-learning-program/"
+    },
+    {
+      image: "https://roundtablelearning.com/wp-content/uploads/2023/07/IMG_20200115_135150-thegem-product-justified-square-s.jpg",
+      title: "Aspen Dental's Blended Learning Dental Implant Program",
+      alt: "Aspen Dental Program",
+      link: "https://roundtablelearning.com/pf/aspen-dentals-blended-learning-dental-implant-program/"
+    }
+  ]
+
+  // Determine items per page based on screen width
+  const getItemsPerPage = () => {
+    if (windowWidth <= 768) return 1 // Mobile: show 1 item
+    if (windowWidth <= 992) return 2 // Tablet: show 2 items
+    return 4 // Desktop: show 4 items
+  }
+
+  const itemsPerPage = getItemsPerPage()
+  const totalPages = Math.ceil(portfolioItems.length / itemsPerPage)
+
+  // Handle window resize for responsive carousel
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+      setPortfolioPage(0); // Reset to first page on resize
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Auto-rotate portfolio carousel
+  useEffect(() => {
+    const slider = document.querySelector('.portfolio-slider');
+    let interval;
+    let isPaused = false;
+
+    const startInterval = () => {
+      interval = setInterval(() => {
+        if (!isPaused) {
+          setPortfolioPage((prevPage) => (prevPage + 1) % totalPages);
+        }
+      }, 5000); // Change page every 5 seconds
+    };
+
+    if (slider) {
+      slider.addEventListener('mouseenter', () => {
+        isPaused = true;
+      });
+      
+      slider.addEventListener('mouseleave', () => {
+        isPaused = false;
+      });
+    }
+
+    startInterval();
+
+    return () => {
+      clearInterval(interval);
+      if (slider) {
+        slider.removeEventListener('mouseenter', () => {});
+        slider.removeEventListener('mouseleave', () => {});
+      }
+    };
+  }, [totalPages]);
+
   useEffect(() => {
     let currentSlide = 0;
     let isPaused = false;
@@ -426,48 +560,27 @@ function HomePage() {
       <section className="portfolio-section">
         <div className="container">
           <div className="portfolio-slider">
-            <div className="portfolio-grid">
-              <div className="portfolio-item">
-                <div className="portfolio-image">
-                  <img src="https://roundtablelearning.com/wp-content/uploads/2025/08/AmerisourceBergin-Customer-Serivce-Empathy-eLearning-thegem-product-justified-square-s.jpg" alt="AmerisourceBergen's Customer Service eLearning" />
-                  <div className="portfolio-overlay">
-                    <div className="portfolio-title">AmerisourceBergen's Customer Service eLearning: Customer Support Training for Empathy</div>
+            <div className="portfolio-grid" key={portfolioPage}>
+              {portfolioItems.slice(portfolioPage * itemsPerPage, portfolioPage * itemsPerPage + itemsPerPage).map((item, index) => (
+                <div key={`${portfolioPage}-${index}`} className="portfolio-item">
+                  <div className="portfolio-image">
+                    <img src={item.image} alt={item.alt} />
+                    <div className="portfolio-overlay">
+                      <div className="portfolio-title">{item.title}</div>
+                    </div>
                   </div>
                 </div>
-              </div>
-              
-              <div className="portfolio-item">
-                <div className="portfolio-image">
-                  <img src="https://roundtablelearning.com/wp-content/uploads/2025/04/Roundtable-Learning-Warehouse-VR-Training-thegem-product-justified-square-s.jpg" alt="VR Warehouse Training" />
-                  <div className="portfolio-overlay">
-                    <div className="portfolio-title">VR Warehouse Training: Cutting Turnover While Saving Time & Money</div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="portfolio-item">
-                <div className="portfolio-image">
-                  <img src="https://roundtablelearning.com/wp-content/uploads/2025/02/Compass-Digital_Handwashing_B-Roll_4K_01-thegem-product-justified-square-s.jpg" alt="Custom VR Handwashing" />
-                  <div className="portfolio-overlay">
-                    <div className="portfolio-title">Custom VR Handwashing with Advanced Hand Tracking</div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="portfolio-item">
-                <div className="portfolio-image">
-                  <img src="https://roundtablelearning.com/wp-content/uploads/2024/07/BNSFlead2-thegem-product-justified-square-s.png" alt="BNSF Train Engine Maintenance" />
-                  <div className="portfolio-overlay">
-                    <div className="portfolio-title">BNSF Train Engine Maintenance VR Training with Haptic Gloves</div>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
             
             <div className="portfolio-dots">
-              <span className="dot active"></span>
-              <span className="dot"></span>
-              <span className="dot"></span>
+              {Array.from({ length: totalPages }).map((_, index) => (
+                <span 
+                  key={index} 
+                  className={`dot ${index === portfolioPage ? 'active' : ''}`}
+                  onClick={() => setPortfolioPage(index)}
+                ></span>
+              ))}
             </div>
           </div>
         </div>
