@@ -65,21 +65,23 @@ function AboutMegaMenu({ open, onClose }) {
               <img src="/r.png" alt="Roundtable Logo" className="about-card-image" />
             </Link>
 
-            <a className="mega-card about hoverable" href="https://roundtablelearning.com/case-studies/">
+            {/* Temporarily hidden Case Studies link */}
+            {/* <a className="mega-card about hoverable" href="https://roundtablelearning.com/case-studies/">
               <div className="about-card-content">
                 <h3 className="mega-card-title">Case Studies</h3>
                 <p className="mega-card-desc">Proven Results: How we transform training into tangible success.</p>
               </div>
               <img src="/tab-hand.png" alt="Tablet with hand" className="about-card-image" />
-            </a>
+            </a> */}
 
-            <a className="mega-card about hoverable" href="https://roundtablelearning.com/news/">
+            {/* Temporarily hidden News link */}
+            {/* <a className="mega-card about hoverable" href="https://roundtablelearning.com/news/">
               <div className="about-card-content">
                 <h3 className="mega-card-title">News</h3>
                 <p className="mega-card-desc">The latest headlines from our team and industry thought leaders.</p>
               </div>
               <img src="/speaker.png" alt="Megaphone" className="about-card-image" />
-            </a>
+            </a> */}
           </div>
         </div>
       </div>

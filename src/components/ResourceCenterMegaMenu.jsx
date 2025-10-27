@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 function ResourceCenterMegaMenu({ open, onClose }) {
   const overlayRef = useRef(null)
@@ -56,37 +57,40 @@ function ResourceCenterMegaMenu({ open, onClose }) {
           </div>
 
           <div className="mega-grid rc-grid">
-            <a className="mega-card rc hoverable" href="https://roundtablelearning.com/resource-center/blog/">
+            <Link className="mega-card rc hoverable" to="/blog" onClick={onClose}>
               <div className="rc-card-content">
                 <h3 className="mega-card-title">Blog</h3>
                 <p className="mega-card-desc">Your source for expert knowledge in learning innovation.</p>
               </div>
               <img src="/keyboard.png" alt="Keyboard" className="rc-card-image" />
-            </a>
+            </Link>
 
-            <a className="mega-card rc hoverable" href="https://roundtablelearning.com/ebooks">
+            {/* Temporarily hidden E-Books */}
+            {/* <a className="mega-card rc hoverable" href="https://roundtablelearning.com/ebooks">
               <div className="rc-card-content">
                 <h3 className="mega-card-title">E-Books</h3>
                 <p className="mega-card-desc">Detailed insights to help you implement effective training programs.</p>
               </div>
               <img src="/tablet.png" alt="Tablet" className="rc-card-image" />
-            </a>
+            </a> */}
 
-            <a className="mega-card rc hoverable" href="https://roundtablelearning.com/case-studies/">
+            {/* Temporarily hidden Use Cases */}
+            {/* <a className="mega-card rc hoverable" href="https://roundtablelearning.com/case-studies/">
               <div className="rc-card-content">
                 <h3 className="mega-card-title">Use Cases</h3>
                 <p className="mega-card-desc">Real-world applications of immersive learning in action.</p>
               </div>
               <img src="/mask.png" alt="Welding mask" className="rc-card-image" />
-            </a>
+            </a> */}
 
-            <a className="mega-card rc hoverable" href="https://roundtablelearning.com/join-the-community/">
+            {/* Temporarily hidden Newsletters */}
+            {/* <a className="mega-card rc hoverable" href="https://roundtablelearning.com/join-the-community/">
               <div className="rc-card-content">
                 <h3 className="mega-card-title">Newsletters</h3>
                 <p className="mega-card-desc">Stay informed with news, tips, and strategies for learning &amp; development.</p>
               </div>
               <img src="/plane.png" alt="Paper plane" className="rc-card-image" />
-            </a>
+            </a> */}
           </div>
         </div>
       </div>

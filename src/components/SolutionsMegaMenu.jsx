@@ -57,47 +57,53 @@ function SolutionsMegaMenu({ open, onClose }) {
           </div>
 
           <div className="mega-grid">
-            <div className="mega-card gradient-a">
-              <h3 className="mega-card-title">
-                <Link to="/extended-reality-training" onClick={() => onClose?.()}>
-                  Extended Reality
-                </Link>
-              </h3>
-              <p className="mega-card-desc">Explore, engage and enhance skills in an immersive, risk-free environment.</p>
-              <ul className="mega-links">
-                <li>
-                  <Link to="/vr-training" onClick={() => onClose?.()}>
-                    Virtual Reality Training
+            <div className="mega-card gradient-a er-card">
+              <img src="/Header-Dropdown Images/Magic-Leap.png" alt="Magic Leap AR Headset" className="er-card-image" />
+              <div className="er-card-content">
+                <h3 className="mega-card-title">
+                  <Link to="/extended-reality-training" onClick={() => onClose?.()}>
+                    Extended Reality
                   </Link>
-                </li>
-                <li>
-                  <Link to="/ar-training" onClick={() => onClose?.()}>
-                    Augmented Reality Training
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/mr-training" onClick={() => onClose?.()}>
-                    Mixed Reality Training
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/data-analysis" onClick={() => onClose?.()}>
-                    Data Analysis & Reporting
-                  </Link>
-                </li>
-              </ul>
+                </h3>
+                <p className="mega-card-desc">Explore, engage and enhance skills in an immersive, risk-free environment.</p>
+                <ul className="mega-links">
+                  <li>
+                    <Link to="/vr-training" onClick={() => onClose?.()}>
+                      Virtual Reality Training
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/ar-training" onClick={() => onClose?.()}>
+                      Augmented Reality Training
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/mr-training" onClick={() => onClose?.()}>
+                      Mixed Reality Training
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/data-analysis" onClick={() => onClose?.()}>
+                      Data Analysis & Reporting
+                    </Link>
+                  </li>
+                </ul>
+              </div>
             </div>
 
-            <div className="mega-card gradient-b">
-              <h3 className="mega-card-title">Instructional Design</h3>
-              <p className="mega-card-desc">Scalable learning solutions designed to meet your specific goals.</p>
-              <ul className="mega-links">
-                <li>
-                  <Link to="/elearning" onClick={() => onClose?.()}>
-                    eLearning
-                  </Link>
-                </li>
-              </ul>
+            <div className="mega-card gradient-b id-card">
+              <div className="id-card-content">
+                <h3 className="mega-card-title">Instructional Design</h3>
+                <p className="mega-card-desc">Scalable learning solutions designed to meet your specific goals.</p>
+                <ul className="mega-links">
+                  <li>
+                    <Link to="/elearning" onClick={() => onClose?.()}>
+                      eLearning
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+              <img src="/Header-Dropdown Images/Mega-Menu_eLearning-Monitor.png" alt="eLearning Monitor" className="id-card-image" />
             </div>
           </div>
         </div>
