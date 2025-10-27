@@ -12,7 +12,7 @@ function BlogPage() {
       {/* Hero Section */}
       <section className="blog-hero-section">
         <div className="blog-hero-background">
-          <img src="/keyboard.png" alt="Keyboard background" />
+          <img src="/keyboard.jpeg" alt="Keyboard background" />
         </div>
         <div className="blog-hero-overlay"></div>
         <div className="container">
