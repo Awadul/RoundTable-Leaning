@@ -11,6 +11,7 @@ import MixedRealityTraining from './Pages/MixedRealityTraining.jsx'
 import DataAnalysis from './Pages/DataAnalysis.jsx'
 import Elearning from './Pages/Elearning.jsx'
 import WhoWeAre from './Pages/WhoWeAre.jsx'
+import BlogPage from './Pages/BlogPage.jsx'
 import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import SolutionsMegaMenu from './components/SolutionsMegaMenu.jsx'
@@ -176,26 +177,25 @@ function App({ children }) {
                   aria-expanded={solutionsOpen}
                   role="button"
                 >
-                  SOLUTIONS
-                </a>
-                {/* Temporarily hidden RESOURCE CENTER link */}
-                {/* <a
-                  href="#resources"
-                  ref={resourceBtnRef}
-                  className={`nav-link ${resourceOpen ? 'active' : ''}`}
-                  onClick={toggleResource}
-                  onMouseEnter={() => {
-                    setResourceOpen(true)
-                    setSolutionsOpen(false)
-                    setAboutOpen(false)
-                  }}
-                  aria-haspopup="menu"
-                  aria-expanded={resourceOpen}
-                  role="button"
-                >
-                  RESOURCE CENTER
-                </a> */}
-                <a
+                SOLUTIONS
+              </a>
+              <a
+                href="#resources"
+                ref={resourceBtnRef}
+                className={`nav-link ${resourceOpen ? 'active' : ''}`}
+                onClick={toggleResource}
+                onMouseEnter={() => {
+                  setResourceOpen(true)
+                  setSolutionsOpen(false)
+                  setAboutOpen(false)
+                }}
+                aria-haspopup="menu"
+                aria-expanded={resourceOpen}
+                role="button"
+              >
+                RESOURCE CENTER
+              </a>
+              <a
                   href="#about"
                   ref={aboutBtnRef}
                   className={`nav-link ${aboutOpen ? 'active' : ''}`}
@@ -265,6 +265,23 @@ function App({ children }) {
                 )}
               </div>
 
+              {/* Resource Center Dropdown */}
+              <div className="mobile-dropdown">
+                <a
+                  href="#resource-center"
+                  className="mobile-nav-link"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    window.location.href = 'https://roundtablelearning.com/resource-center/'
+                  }}
+                >
+                  RESOURCE CENTER
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="dropdown-icon">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </a>
+              </div>
+
               {/* About Dropdown */}
               <div className="mobile-dropdown">
                 <a
@@ -321,6 +338,7 @@ createRoot(document.getElementById('root')).render(
           <Route path="/data-analysis" element={<DataAnalysis />} />
           <Route path="/elearning" element={<Elearning />} />
           <Route path="/who-we-are" element={<WhoWeAre />} />
+          <Route path="/blog" element={<BlogPage />} />
         </Routes>
       </App>
     </BrowserRouter>
