@@ -260,21 +260,27 @@
 .page-numbers {
   padding: 0.5rem 1rem;
   border: 1px solid #ddd;
+  background: white;
   text-decoration: none;
   color: var(--text-dark);
   transition: all 0.3s ease;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  font-family: 'Open Sans', system-ui, -apple-system, sans-serif;
+  font-size: 0.95rem;
+  min-width: 40px;
 }
 
 .page-numbers.current {
   background-color: var(--bright-teal);
   color: white;
   border-color: var(--bright-teal);
+  cursor: default;
 }
 
-.page-numbers:hover:not(.current) {
+.page-numbers:hover:not(.current):not(.dots) {
   background-color: var(--bright-teal);
   color: white;
   border-color: var(--bright-teal);
@@ -284,6 +290,31 @@
   border: none;
   cursor: default;
   pointer-events: none;
+  background: transparent;
+}
+
+.page-numbers.prev,
+.page-numbers.next {
+  padding: 0.5rem 0.75rem;
+}
+
+.page-numbers.prev i,
+.page-numbers.next i {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-left: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+}
+
+.page-numbers.prev i {
+  transform: rotate(45deg);
+  margin-right: 2px;
+}
+
+.page-numbers.next i {
+  transform: rotate(-135deg);
+  margin-left: 2px;
 }
 
 /* Sidebar */

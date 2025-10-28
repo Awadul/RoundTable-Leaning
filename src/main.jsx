@@ -12,6 +12,7 @@ import DataAnalysis from './Pages/DataAnalysis.jsx'
 import Elearning from './Pages/Elearning.jsx'
 import WhoWeAre from './Pages/WhoWeAre.jsx'
 import BlogPage from './Pages/BlogPage.jsx'
+import BlogDetail from './Pages/BlogDetail.jsx'
 import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import SolutionsMegaMenu from './components/SolutionsMegaMenu.jsx'
@@ -339,6 +340,7 @@ createRoot(document.getElementById('root')).render(
           <Route path="/elearning" element={<Elearning />} />
           <Route path="/who-we-are" element={<WhoWeAre />} />
           <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/:slug" element={<BlogDetail />} />
         </Routes>
       </App>
     </BrowserRouter>

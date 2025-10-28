@@ -103,17 +103,17 @@
 }
 
 .nav-link {
-  color: #03708f;
+  color: var(--bright-teal);
   text-decoration: none;
   font-weight: 600;
   font-size: 1.1rem;
   letter-spacing: 0.5px;
-  transition: color 0.3s ease;
   padding-top: 1rem;
   border-top: 3px solid transparent;
   transition: color 0.3s ease, border-color 0.3s ease;
   display: inline-flex;
   align-items: center;
+  position: relative;
 }
 
 /* Hamburger Menu - Mobile Only */
@@ -264,11 +264,10 @@
 }
 
 .nav-link:hover {
-  color: var(--bright-teal);
+  border-top-color: var(--bright-teal);
 }
 
 .nav-link.active {
-  color: var(--bright-teal);
   border-top-color: var(--bright-teal);
 }
 
@@ -331,7 +330,7 @@
   top: 72px; /* below header */
   left: 0;
   width: 100%;
-  background: #FAFAFA;
+  background: #FFFFFF;
   box-shadow: 0px 3px 6px rgba(0,0,0,0.12);
   z-index: 1100;
   padding: 0 0 80px 0;
@@ -381,11 +380,11 @@
 
 /* Radial-like gradients to echo Elementor styles */
 .mega-card.gradient-a {
-  background-image: radial-gradient(circle at center, #FAFAFA 0%, #F1F1F1 100%);
+  background: #FFFFFF;
 }
 
 .mega-card.gradient-b {
-  background-image: radial-gradient(circle at center, #FAFAFA 0%, #F1F1F1 100%);
+  background: #FFFFFF;
 }
 
 /* Resource Center grid (2x2 layout) */
@@ -403,7 +402,7 @@
 }
 
 .mega-card.rc {
-  background-image: radial-gradient(circle, rgba(250,250,250,1) 0%, rgba(241,241,241,1) 50%, rgba(238,238,238,1) 100%);
+  background: #FFFFFF;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -422,7 +421,7 @@
 }
 
 .mega-card.about {
-  background-image: radial-gradient(circle, rgba(250,250,250,1) 0%, rgba(241,241,241,1) 50%, rgba(238,238,238,1) 100%);
+  background: #FFFFFF;
   display: flex;
   flex-direction: column;
   justify-content: center;

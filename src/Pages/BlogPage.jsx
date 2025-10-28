@@ -1,11 +1,75 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import './BlogPage.css'
+import blogsData from '../data/blogs.json'
 
 function BlogPage() {
+  const [currentPage, setCurrentPage] = useState(1)
+  const blogsPerPage = 5
+
   useEffect(() => {
-    // Scroll to top when component mounts
+    // Scroll to top when component mounts or page changes
     window.scrollTo(0, 0)
-  }, [])
+  }, [currentPage])
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString)
+    return date.toLocaleDateString('en-US', { 
+      month: 'short', 
+      day: '2-digit' 
+    })
+  }
+
+  // Calculate pagination
+  const totalBlogs = blogsData.length
+  const totalPages = Math.ceil(totalBlogs / blogsPerPage)
+  const indexOfLastBlog = currentPage * blogsPerPage
+  const indexOfFirstBlog = indexOfLastBlog - blogsPerPage
+  const currentBlogs = blogsData.slice(indexOfFirstBlog, indexOfLastBlog)
+
+  // Handle page change
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber)
+  }
+
+  // Generate page numbers to display
+  const getPageNumbers = () => {
+    const pageNumbers = []
+    const maxVisiblePages = 5
+
+    if (totalPages <= maxVisiblePages) {
+      // Show all pages if total is less than max visible
+      for (let i = 1; i <= totalPages; i++) {
+        pageNumbers.push(i)
+      }
+    } else {
+      // Always show first page
+      pageNumbers.push(1)
+
+      if (currentPage > 3) {
+        pageNumbers.push('...')
+      }
+
+      // Show pages around current page
+      const startPage = Math.max(2, currentPage - 1)
+      const endPage = Math.min(totalPages - 1, currentPage + 1)
+
+      for (let i = startPage; i <= endPage; i++) {
+        pageNumbers.push(i)
+      }
+
+      if (currentPage < totalPages - 2) {
+        pageNumbers.push('...')
+      }
+
+      // Always show last page
+      if (totalPages > 1) {
+        pageNumbers.push(totalPages)
+      }
+    }
+
+    return pageNumbers
+  }
 
   return (
     <div className="blog-page">
@@ -65,324 +129,105 @@ function BlogPage() {
             {/* Left Column - Blog Listings */}
             <div className="blog-list-column">
               <div className="blog-list">
-                {/* Real blog posts from Elementor */}
-                <article className="blog-post-item">
-                  <div className="blog-post-container">
-                    <div className="blog-post-image">
-                      <a href="#">
-                        <img src="https://roundtablelearning.com/wp-content/uploads/2021/11/AdobeStock_1430326108-thegem-blog-compact.jpeg" alt="Training needs analysis framework" />
-                      </a>
-                    </div>
-                    <div className="blog-post-content">
-                      <div className="blog-post-title">
-                        <h5 className="blog-entry-title">
-                          <a href="#">
-                            <span className="blog-entry-date">08 Oct: </span>
-                            <span className="light">Is A Training Needs Analysis Really Worth It? 3 Reasons To Conduct A TNA</span>
-                          </a>
-                        </h5>
-                      </div>
-                      <div className="blog-post-text">
-                        <p>Your team is under performing. Safety incidents are climbing. Customer satisfaction scores are dropping. The knee-jerk reaction? "We need more…</p>
-                      </div>
-                      <div className="blog-post-meta">
-                        <div className="blog-entry-meta">
-                          <div className="blog-meta-left">
-                            <span className="blog-meta-author">By Hanna Liszniansky</span>
+                {/* Blog posts from data - paginated */}
+                {currentBlogs.map((blog) => {
+                  // Handle both heroImages (old format) and heroSlideshow (new format)
+                  const heroImage = blog.heroSlideshow?.[0] || blog.heroImages?.[0] || blog.featuredImage;
+                  const authorName = typeof blog.author === 'string' ? blog.author : blog.author?.name;
+                  
+                  return (
+                    <article key={blog.id} className="blog-post-item">
+                      <div className="blog-post-container">
+                        <div className="blog-post-image">
+                          <Link to={`/blog/${blog.slug}`}>
+                            <img src={heroImage} alt={blog.title} />
+                          </Link>
+                        </div>
+                        <div className="blog-post-content">
+                          <div className="blog-post-title">
+                            <h5 className="blog-entry-title">
+                              <Link to={`/blog/${blog.slug}`}>
+                                <span className="blog-entry-date">{formatDate(blog.date)}: </span>
+                                <span className="light">{blog.title}</span>
+                              </Link>
+                            </h5>
                           </div>
-                          <div className="blog-meta-right">
-                            <span className="blog-meta-likes">
-                              <a href="#" className="zilla-likes">
-                                <i className="default"></i>
-                                <span className="zilla-likes-count">0</span>
-                              </a>
-                            </span>
+                          <div className="blog-post-text">
+                            <p>{blog.excerpt}</p>
+                          </div>
+                          <div className="blog-post-meta">
+                            <div className="blog-entry-meta">
+                              <div className="blog-meta-left">
+                                <span className="blog-meta-author">By {authorName}</span>
+                              </div>
+                              <div className="blog-meta-right">
+                                <span className="blog-meta-likes">
+                                  <a href="#" className="zilla-likes">
+                                    <i className="default"></i>
+                                    <span className="zilla-likes-count">{blog.likes}</span>
+                                  </a>
+                                </span>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                </article>
-
-                <article className="blog-post-item">
-                  <div className="blog-post-container">
-                    <div className="blog-post-image">
-                      <a href="#">
-                        <img src="https://roundtablelearning.com/wp-content/uploads/2025/04/PIT-Trainer-XR_Frame-0361_Small-thegem-blog-compact.jpg" alt="Choosing Between Custom and Off-the-Shelf VR Training Solutions" />
-                      </a>
-                    </div>
-                    <div className="blog-post-content">
-                      <div className="blog-post-title">
-                        <h5 className="blog-entry-title">
-                          <a href="#">
-                            <span className="blog-entry-date">03 Oct: </span>
-                            <span className="light">Custom VR Training vs Off-the-Shelf Solutions: Our Comparison</span>
-                          </a>
-                        </h5>
-                      </div>
-                      <div className="blog-post-text">
-                        <p>Virtual reality (VR) is transforming corporate training by offering immersive experiences that engage employees like never before. Organizations face a…</p>
-                      </div>
-                    </div>
-                    <div className="blog-post-meta">
-                      <div className="blog-entry-meta">
-                        <div className="blog-meta-left">
-                          <span className="blog-meta-author">By Hanna Liszniansky</span>
-                        </div>
-                        <div className="blog-meta-right">
-                          <span className="blog-meta-likes">
-                            <a href="#" className="zilla-likes">
-                              <i className="default"></i>
-                              <span className="zilla-likes-count">0</span>
-                            </a>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </article>
-
-                <article className="blog-post-item">
-                  <div className="blog-post-container">
-                    <div className="blog-post-image">
-                      <a href="#">
-                        <img src="https://roundtablelearning.com/wp-content/uploads/2025/09/Screenshot-2025-08-27-at-10.42.27-AM-thegem-blog-compact.jpg" alt="What is Phygital Training?" />
-                      </a>
-                    </div>
-                    <div className="blog-post-content">
-                      <div className="blog-post-title">
-                        <h5 className="blog-entry-title">
-                          <a href="#">
-                            <span className="blog-entry-date">19 Sep: </span>
-                            <span className="light">What Is Phygital?</span>
-                          </a>
-                        </h5>
-                      </div>
-                      <div className="blog-post-text">
-                        <p>Stop separating training from work. That's the core problem with most corporate learning programs – they pull employees away from their…</p>
-                      </div>
-                    </div>
-                    <div className="blog-post-meta">
-                      <div className="blog-entry-meta">
-                        <div className="blog-meta-left">
-                          <span className="blog-meta-author">By Hanna Liszniansky</span>
-                        </div>
-                        <div className="blog-meta-right">
-                          <span className="blog-meta-likes">
-                            <a href="#" className="zilla-likes">
-                              <i className="default"></i>
-                              <span className="zilla-likes-count">0</span>
-                            </a>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </article>
-
-                <article className="blog-post-item">
-                  <div className="blog-post-container">
-                    <div className="blog-post-image">
-                      <a href="#">
-                        <img src="https://roundtablelearning.com/wp-content/uploads/2024/06/The-Future-of-Immersive-Learning-Trends-Innovations--scaled-thegem-blog-compact.jpeg" alt="Car service manager uses virtual reality" />
-                      </a>
-                    </div>
-                    <div className="blog-post-content">
-                      <div className="blog-post-title">
-                        <h5 className="blog-entry-title">
-                          <a href="#">
-                            <span className="blog-entry-date">17 Sep: </span>
-                            <span className="light">The Future of Immersive Learning: Trends and Innovations in XR Training Solutions</span>
-                          </a>
-                        </h5>
-                      </div>
-                      <div className="blog-post-text">
-                        <p>When we talk about XR trends, we're covering the whole field of virtual reality, augmented reality and their hybrid called…</p>
-                      </div>
-                    </div>
-                    <div className="blog-post-meta">
-                      <div className="blog-entry-meta">
-                        <div className="blog-meta-right">
-                          <span className="blog-meta-likes">
-                            <a href="#" className="zilla-likes">
-                              <i className="default"></i>
-                              <span className="zilla-likes-count">2</span>
-                            </a>
-                          </span>
-                        </div>
-                        <div className="blog-meta-left">
-                          <span className="blog-meta-author">By Hanna Liszniansky</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </article>
-
-                <article className="blog-post-item">
-                  <div className="blog-post-container">
-                    <div className="blog-post-image">
-                      <a href="#">
-                        <img src="https://roundtablelearning.com/wp-content/uploads/2025/09/What-is-Microlearning-Roundtable-Learning-thegem-blog-compact.jpeg" alt="man using mouse and keyboard for streaming" />
-                      </a>
-                    </div>
-                    <div className="blog-post-content">
-                      <div className="blog-post-title">
-                        <h5 className="blog-entry-title">
-                          <a href="#">
-                            <span className="blog-entry-date">05 Sep: </span>
-                            <span className="light">What Is Microlearning And Why Does It Matter? Examples And Best Practices</span>
-                          </a>
-                        </h5>
-                      </div>
-                      <div className="blog-post-text">
-                        <p>Microlearning is learning content, delivered in a small chunks to address a clearly-identified gap in knowledge, skills or attitudes (KSAs)….</p>
-                      </div>
-                    </div>
-                    <div className="blog-post-meta">
-                      <div className="blog-entry-meta">
-                        <div className="blog-meta-left">
-                          <span className="blog-meta-author">By Hanna Liszniansky</span>
-                        </div>
-                        <div className="blog-meta-right">
-                          <span className="blog-meta-likes">
-                            <a href="#" className="zilla-likes">
-                              <i className="default"></i>
-                              <span className="zilla-likes-count">0</span>
-                            </a>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </article>
-
-                <article className="blog-post-item">
-                  <div className="blog-post-container">
-                    <div className="blog-post-image">
-                      <a href="#">
-                        <img src="https://roundtablelearning.com/wp-content/uploads/2023/11/5-Benefits-to-Microlearning-scaled-thegem-blog-compact.jpg" alt="5 Benefits to Microlearning" />
-                      </a>
-                    </div>
-                    <div className="blog-post-content">
-                      <div className="blog-post-title">
-                        <h5 className="blog-entry-title">
-                          <a href="#">
-                            <span className="blog-entry-date">05 Sep: </span>
-                            <span className="light">10 Benefits of Microlearning Based Training</span>
-                          </a>
-                        </h5>
-                      </div>
-                      <div className="blog-post-text">
-                        <p>What Is Microlearning? Microlearning benefits are many, but what is microlearning itself? There's no dictionary definition, but microlearning courses share…</p>
-                      </div>
-                    </div>
-                    <div className="blog-post-meta">
-                      <div className="blog-entry-meta">
-                        <div className="blog-meta-left">
-                          <span className="blog-meta-author">By Hanna Liszniansky</span>
-                        </div>
-                        <div className="blog-meta-right">
-                          <span className="blog-meta-likes">
-                            <a href="#" className="zilla-likes">
-                              <i className="default"></i>
-                              <span className="zilla-likes-count">0</span>
-                            </a>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </article>
-
-                <article className="blog-post-item">
-                  <div className="blog-post-container">
-                    <div className="blog-post-image">
-                      <a href="#">
-                        <img src="https://roundtablelearning.com/wp-content/uploads/2023/07/photo-1574689049868-e94ed5301745-768x528-1-thegem-blog-compact.jpg" alt="Industrial warehouse training" />
-                      </a>
-                    </div>
-                    <div className="blog-post-content">
-                      <div className="blog-post-title">
-                        <h5 className="blog-entry-title">
-                          <a href="#">
-                            <span className="blog-entry-date">11 Jul: </span>
-                            <span className="light">3 Biggest Benefits of VR In Warehousing</span>
-                          </a>
-                        </h5>
-                      </div>
-                      <div className="blog-post-text">
-                        <p>Industrial VR Training for a Warehouse that Runs Smoothly What Are We Looking at Here? Modern warehousing relies on numerous…</p>
-                      </div>
-                    </div>
-                    <div className="blog-post-meta">
-                      <div className="blog-entry-meta">
-                        <div className="blog-meta-left">
-                          <span className="blog-meta-author">By Hanna Liszniansky</span>
-                        </div>
-                        <div className="blog-meta-right">
-                          <span className="blog-meta-likes">
-                            <a href="#" className="zilla-likes">
-                              <i className="default"></i>
-                              <span className="zilla-likes-count">0</span>
-                            </a>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </article>
-
-                <article className="blog-post-item">
-                  <div className="blog-post-container">
-                    <div className="blog-post-image">
-                      <a href="#">
-                        <img src="https://roundtablelearning.com/wp-content/uploads/2023/08/1_X1YtJ3WJxwFgUkYdonu3hA-thegem-blog-compact.png" alt="AR vs. VR Training" />
-                      </a>
-                    </div>
-                    <div className="blog-post-content">
-                      <div className="blog-post-title">
-                        <h5 className="blog-entry-title">
-                          <a href="#">
-                            <span className="blog-entry-date">08 Jul: </span>
-                            <span className="light">AR vs VR Training: How to Choose the Best Technology</span>
-                          </a>
-                        </h5>
-                      </div>
-                      <div className="blog-post-text">
-                        <p>While Virtual Reality (VR) and Augmented Reality (AR) aren't the same, AR vs VR have a lot in common. They…</p>
-                      </div>
-                    </div>
-                    <div className="blog-post-meta">
-                      <div className="blog-entry-meta">
-                        <div className="blog-meta-left">
-                          <span className="blog-meta-author">By Hanna Liszniansky</span>
-                        </div>
-                        <div className="blog-meta-right">
-                          <span className="blog-meta-likes">
-                            <a href="#" className="zilla-likes">
-                              <i className="default"></i>
-                              <span className="zilla-likes-count">0</span>
-                            </a>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </article>
+                    </article>
+                  );
+                })}
               </div>
 
               {/* Pagination */}
-              <div className="blog-pagination">
-                <div className="pagination-links">
-                  <span className="page-numbers current">1</span>
-                  <a href="#page-2" className="page-numbers">2</a>
-                  <span className="page-numbers dots">…</span>
-                  <a href="#page-35" className="page-numbers">35</a>
-                  <a href="#page-2" className="next page-numbers">
-                    <i className="default"></i>
-                  </a>
+              {totalPages > 1 && (
+                <div className="blog-pagination">
+                  <div className="pagination-links">
+                    {/* Previous Button */}
+                    {currentPage > 1 && (
+                      <button
+                        onClick={() => handlePageChange(currentPage - 1)}
+                        className="page-numbers prev"
+                        aria-label="Previous page"
+                      >
+                        <i className="default"></i>
+                      </button>
+                    )}
+
+                    {/* Page Numbers */}
+                    {getPageNumbers().map((pageNumber, index) => {
+                      if (pageNumber === '...') {
+                        return (
+                          <span key={`dots-${index}`} className="page-numbers dots">
+                            …
+                          </span>
+                        )
+                      }
+                      
+                      return (
+                        <button
+                          key={pageNumber}
+                          onClick={() => handlePageChange(pageNumber)}
+                          className={`page-numbers ${currentPage === pageNumber ? 'current' : ''}`}
+                          aria-label={`Page ${pageNumber}`}
+                          aria-current={currentPage === pageNumber ? 'page' : undefined}
+                        >
+                          {pageNumber}
+                        </button>
+                      )
+                    })}
+
+                    {/* Next Button */}
+                    {currentPage < totalPages && (
+                      <button
+                        onClick={() => handlePageChange(currentPage + 1)}
+                        className="page-numbers next"
+                        aria-label="Next page"
+                      >
+                        <i className="default"></i>
+                      </button>
+                    )}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
 
             {/* Right Column - Sticky Sidebar */}
