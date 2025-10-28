@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay } from 'swiper/modules'
+import { Link } from 'react-router-dom'
 import 'swiper/css'
+import blogsData from '../data/blogs.json'
 
 function SolutionsCard({ title, description, imageAlt, imageSrc }) {
   return (
@@ -59,6 +61,7 @@ function SolutionsGrid() {
 function HomePage() {
   const [portfolioPage, setPortfolioPage] = useState(0)
   const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200)
+  const [activeBlogFilter, setActiveBlogFilter] = useState('all')
   
   const portfolioItems = [
     {
@@ -144,6 +147,47 @@ function HomePage() {
 
   const itemsPerPage = getItemsPerPage()
   const totalPages = Math.ceil(portfolioItems.length / itemsPerPage)
+
+  // Blog filtering logic
+  const getFilteredBlogs = () => {
+    if (activeBlogFilter === 'all') {
+      return blogsData.slice(0, 3) // Show first 3 blogs for homepage
+    }
+    
+    // Map filter values to blog tags/categories
+    const filterMap = {
+      'augmented-reality': ['AR', 'Augmented Reality', 'AR Training'],
+      'corporate-training': ['Corporate Training', 'Training', 'L&D'],
+      'elearning': ['eLearning', 'ELEARNING'],
+      'virtual-reality': ['VR', 'Virtual Reality', 'VR Training'],
+      'xrs': ['XRS', 'XR', 'Extended Reality']
+    }
+    
+    const targetTags = filterMap[activeBlogFilter] || []
+    
+    return blogsData.filter(blog => {
+      return blog.tags.some(tag => 
+        targetTags.some(targetTag => 
+          tag.toLowerCase().includes(targetTag.toLowerCase())
+        )
+      )
+    }).slice(0, 3) // Limit to 3 blogs for homepage
+  }
+
+  const filteredBlogs = getFilteredBlogs()
+
+  const handleBlogFilter = (filter) => {
+    setActiveBlogFilter(filter)
+  }
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString)
+    return date.toLocaleDateString('en-US', { 
+      month: 'long', 
+      day: 'numeric',
+      year: 'numeric'
+    })
+  }
 
   // Handle window resize for responsive carousel
   useEffect(() => {
@@ -931,72 +975,78 @@ function HomePage() {
           <h2 className="blog-title">Explore Our Blog for Helpful Training Tips</h2>
           
           <div className="blog-filters">
-            <button className="blog-filter active" data-filter="all">SHOW ALL</button>
-            <button className="blog-filter" data-filter="augmented-reality">AUGMENTED REALITY</button>
-            <button className="blog-filter" data-filter="corporate-training">CORPORATE TRAINING</button>
-            <button className="blog-filter" data-filter="elearning">ELEARNING</button>
-            <button className="blog-filter" data-filter="virtual-reality">VIRTUAL REALITY</button>
-            <button className="blog-filter" data-filter="xrs">XRS</button>
+            <button 
+              className={`blog-filter ${activeBlogFilter === 'all' ? 'active' : ''}`} 
+              onClick={() => handleBlogFilter('all')}
+            >
+              SHOW ALL
+            </button>
+            <button 
+              className={`blog-filter ${activeBlogFilter === 'augmented-reality' ? 'active' : ''}`} 
+              onClick={() => handleBlogFilter('augmented-reality')}
+            >
+              AUGMENTED REALITY
+            </button>
+            <button 
+              className={`blog-filter ${activeBlogFilter === 'corporate-training' ? 'active' : ''}`} 
+              onClick={() => handleBlogFilter('corporate-training')}
+            >
+              CORPORATE TRAINING
+            </button>
+            <button 
+              className={`blog-filter ${activeBlogFilter === 'elearning' ? 'active' : ''}`} 
+              onClick={() => handleBlogFilter('elearning')}
+            >
+              ELEARNING
+            </button>
+            <button 
+              className={`blog-filter ${activeBlogFilter === 'virtual-reality' ? 'active' : ''}`} 
+              onClick={() => handleBlogFilter('virtual-reality')}
+            >
+              VIRTUAL REALITY
+            </button>
+            <button 
+              className={`blog-filter ${activeBlogFilter === 'xrs' ? 'active' : ''}`} 
+              onClick={() => handleBlogFilter('xrs')}
+            >
+              XRS
+            </button>
           </div>
 
           <div className="blog-grid">
-            <article className="blog-post">
-              <div className="blog-image">
-                <img src="https://roundtablelearning.com/wp-content/uploads/2021/11/AdobeStock_1430326108-thegem-portfolio-metro.jpeg" alt="Training needs analysis framework" />
-              </div>
-              <div className="blog-content">
-                <div className="blog-meta">
-                  <div className="blog-author">
-                    <img src="https://roundtablelearning.com/wp-content/uploads/2025/06/Hanna-Liszniansky_Roundtable-Learning-Headshot_Circle-Crop_07-150x150.png" alt="Hanna Liszniansky" className="author-avatar" />
-                    <span className="author-name">By Hanna Liszniansky</span>
+            {filteredBlogs.map((blog) => {
+              const heroImage = blog.heroSlideshow?.[0] || blog.heroImages?.[0] || blog.featuredImage;
+              const authorName = typeof blog.author === 'string' ? blog.author : blog.author?.name;
+              const authorAvatar = typeof blog.author === 'string' ? '' : blog.author?.avatar;
+              
+              return (
+                <article key={blog.id} className="blog-post">
+                  <div className="blog-image">
+                    <Link to={`/blog/${blog.slug}`}>
+                      <img src={heroImage} alt={blog.title} />
+                    </Link>
                   </div>
-                  <span className="blog-date">October 8, 2025</span>
-                </div>
-                <h3 className="blog-post-title">
-                  <a href="https://roundtablelearning.com/is-a-training-needs-analysis-really-worth-it-3-reasons-to-conduct-a-tna/">Is A Training Needs Analysis Really Worth It? 3 Reasons To Conduct A TNA</a>
-                </h3>
-              </div>
-            </article>
-
-            <article className="blog-post">
-              <div className="blog-image">
-                <img src="https://roundtablelearning.com/wp-content/uploads/2025/04/PIT-Trainer-XR_Frame-0361_Small-thegem-portfolio-metro.jpg" alt="Custom VR Training Solutions" />
-              </div>
-              <div className="blog-content">
-                <div className="blog-meta">
-                  <div className="blog-author">
-                    <img src="https://roundtablelearning.com/wp-content/uploads/2025/06/Hanna-Liszniansky_Roundtable-Learning-Headshot_Circle-Crop_07-150x150.png" alt="Hanna Liszniansky" className="author-avatar" />
-                    <span className="author-name">By Hanna Liszniansky</span>
+                  <div className="blog-content">
+                    <div className="blog-meta">
+                      <div className="blog-author">
+                        {authorAvatar && (
+                          <img src={authorAvatar} alt={authorName} className="author-avatar" />
+                        )}
+                        <span className="author-name">By {authorName}</span>
+                      </div>
+                      <span className="blog-date">{formatDate(blog.date)}</span>
+                    </div>
+                    <h3 className="blog-post-title">
+                      <Link to={`/blog/${blog.slug}`}>{blog.title}</Link>
+                    </h3>
                   </div>
-                  <span className="blog-date">October 3, 2025</span>
-                </div>
-                <h3 className="blog-post-title">
-                  <a href="https://roundtablelearning.com/custom-vs-off-the-shelf-training-content-which-is-best-for-your-organization/">Custom VR Training vs Off-the-Shelf Solutions: Our Comparison</a>
-                </h3>
-              </div>
-            </article>
-
-            <article className="blog-post">
-              <div className="blog-image">
-                <img src="https://roundtablelearning.com/wp-content/uploads/2025/09/Screenshot-2025-08-27-at-10.42.27-AM-thegem-portfolio-metro.jpg" alt="What is Phygital Training" />
-              </div>
-              <div className="blog-content">
-                <div className="blog-meta">
-                  <div className="blog-author">
-                    <img src="https://roundtablelearning.com/wp-content/uploads/2025/06/Hanna-Liszniansky_Roundtable-Learning-Headshot_Circle-Crop_07-150x150.png" alt="Hanna Liszniansky" className="author-avatar" />
-                    <span className="author-name">By Hanna Liszniansky</span>
-                  </div>
-                  <span className="blog-date">September 19, 2025</span>
-                </div>
-                <h3 className="blog-post-title">
-                  <a href="https://roundtablelearning.com/what-is-phygital/">What Is Phygital?</a>
-                </h3>
-              </div>
-            </article>
+                </article>
+              );
+            })}
           </div>
 
           <div className="blog-cta">
-            <a href="https://roundtablelearning.com/resource-center/blog/" className="blog-read-more-btn">READ MORE</a>
+            <Link to="/blog" state={{ fromHomepage: true }} className="blog-read-more-btn">READ MORE</Link>
           </div>
         </div>
       </section>

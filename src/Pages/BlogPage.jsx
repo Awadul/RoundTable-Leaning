@@ -1,16 +1,41 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useSearchParams } from 'react-router-dom'
 import './BlogPage.css'
 import blogsData from '../data/blogs.json'
 
 function BlogPage() {
-  const [currentPage, setCurrentPage] = useState(1)
+  const [searchParams, setSearchParams] = useSearchParams()
+  const [currentPage, setCurrentPage] = useState(() => {
+    // Get page from URL parameters, default to 1
+    const pageFromUrl = searchParams.get('page')
+    return pageFromUrl ? parseInt(pageFromUrl, 10) : 1
+  })
   const blogsPerPage = 5
+  const location = useLocation()
 
   useEffect(() => {
     // Scroll to top when component mounts or page changes
     window.scrollTo(0, 0)
   }, [currentPage])
+
+  // Update URL when page changes
+  useEffect(() => {
+    const newSearchParams = new URLSearchParams(searchParams)
+    if (currentPage > 1) {
+      newSearchParams.set('page', currentPage.toString())
+    } else {
+      newSearchParams.delete('page')
+    }
+    setSearchParams(newSearchParams, { replace: true })
+  }, [currentPage, searchParams, setSearchParams])
+
+  // Reset to page 1 when navigating from homepage (not from blog detail)
+  useEffect(() => {
+    const state = location.state
+    if (state?.fromHomepage) {
+      setCurrentPage(1)
+    }
+  }, [location.state])
 
   const formatDate = (dateString) => {
     const date = new Date(dateString)
@@ -139,14 +164,14 @@ function BlogPage() {
                     <article key={blog.id} className="blog-post-item">
                       <div className="blog-post-container">
                         <div className="blog-post-image">
-                          <Link to={`/blog/${blog.slug}`}>
+                          <Link to={`/blog/${blog.slug}`} state={{ currentPage }}>
                             <img src={heroImage} alt={blog.title} />
                           </Link>
                         </div>
                         <div className="blog-post-content">
                           <div className="blog-post-title">
                             <h5 className="blog-entry-title">
-                              <Link to={`/blog/${blog.slug}`}>
+                              <Link to={`/blog/${blog.slug}`} state={{ currentPage }}>
                                 <span className="blog-entry-date">{formatDate(blog.date)}: </span>
                                 <span className="light">{blog.title}</span>
                               </Link>

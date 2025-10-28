@@ -1,16 +1,31 @@
 import { useEffect, useState } from 'react'
-import { useParams, useNavigate, Link } from 'react-router-dom'
+import { useParams, useNavigate, Link, useLocation } from 'react-router-dom'
 import './BlogDetail.css'
 import blogsData from '../data/blogs.json'
 
 function BlogDetail() {
   const { slug } = useParams()
   const navigate = useNavigate()
+  const location = useLocation()
   const [blog, setBlog] = useState(null)
   const [relatedBlogs, setRelatedBlogs] = useState([])
   const [loading, setLoading] = useState(true)
   const [likes, setLikes] = useState(0)
   const [hasLiked, setHasLiked] = useState(false)
+
+  // Get the current page from the referrer URL
+  const getCurrentPageFromReferrer = () => {
+    if (location.state?.currentPage) {
+      return location.state.currentPage
+    }
+    // Try to get from document.referrer if available
+    if (typeof document !== 'undefined' && document.referrer) {
+      const url = new URL(document.referrer)
+      const pageParam = url.searchParams.get('page')
+      return pageParam ? parseInt(pageParam, 10) : 1
+    }
+    return 1
+  }
 
   useEffect(() => {
     // Scroll to top when component mounts
@@ -71,7 +86,7 @@ function BlogDetail() {
     return (
       <div className="blog-not-found">
         <h1>Blog Post Not Found</h1>
-        <button onClick={() => navigate('/blog')} className="back-to-blog-btn">
+        <button onClick={() => navigate(`/blog${getCurrentPageFromReferrer() > 1 ? `?page=${getCurrentPageFromReferrer()}` : ''}`)} className="back-to-blog-btn">
           Back to Blog
         </button>
       </div>
@@ -162,7 +177,7 @@ function BlogDetail() {
             <div className="blog-quick-actions">
               <h5 className="quick-actions-title">Quick Actions</h5>
               <button 
-                onClick={() => navigate('/blog')} 
+                onClick={() => navigate(`/blog${getCurrentPageFromReferrer() > 1 ? `?page=${getCurrentPageFromReferrer()}` : ''}`)} 
                 className="back-to-blog-btn"
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

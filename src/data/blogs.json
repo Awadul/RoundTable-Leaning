@@ -5,7 +5,7 @@
     "title": "Is A Training Needs Analysis Really Worth It? 3 Reasons To Conduct A TNA",
     "author": {
       "name": "Hanna Liszniansky",
-      "avatar": "/images/authors/hanna-liszniansky.png",
+      "avatar": "/images/assets/hanna-liszniansky.png",
       "bio": "Hanna Liszniansky is the Marketing Manager at Roundtable Learning. Before joining the team, she worked for a recruiting firm specializing in reviving the Rust Belt's trades workforce, where she partnered with clients to build hiring pathways and workforce development programs."
     },
     "date": "October 8, 2025",
@@ -14,9 +14,9 @@
     "category": "Blog",
     "tags": ["Training", "Analysis", "Corporate Learning"],
     "excerpt": "Your team is under performing. Safety incidents are climbing. Customer satisfaction scores are dropping. The knee-jerk reaction? \"We need more training.\"",
-    "featuredImage": "/images/blog/training-needs-analysis.jpg",
+    "featuredImage": "/src/assets/blogs/1.webp",
     "heroImages": [
-      "https://roundtablelearning.com/wp-content/uploads/2024/05/Meta-Quest-3-scaled.jpeg",
+      "/src/assets/blogs/1.webp",
       "https://roundtablelearning.com/wp-content/uploads/2024/05/Corporate-Learning-Lessons-5-steps-to-squashing-the-Skills-Gap-scaled.jpg",
       "https://roundtablelearning.com/wp-content/uploads/2024/02/KE9kgFCT5uYEu2pbyDnQkH-scaled.jpg"
     ],
@@ -111,7 +111,7 @@
     "title": "What is Virtual Reality Training 2025? A Short but Comprehensive Look in 5 Sections",
     "author": {
       "name": "Hanna Liszniansky",
-      "avatar": "/images/authors/hanna-liszniansky.png",
+      "avatar": "/images/assets/hanna-liszniansky.png",
       "bio": "Hanna Liszniansky is the Marketing Manager at Roundtable Learning."
     },
     "date": "June 30, 2025",
@@ -120,9 +120,9 @@
     "category": "Blog",
     "tags": ["Virtual Reality", "VR Training", "Technology"],
     "excerpt": "Virtual Reality training is revolutionizing how organizations train their workforce. Discover everything you need to know about VR training in 2025.",
-    "featuredImage": "https://roundtablelearning.com/wp-content/uploads/2025/02/Compass-Digital_Handwashing_B-Roll_4K_11-thegem-news-carousel.jpg",
+    "featuredImage": "/src/assets/blogs/2.webp",
     "heroImages": [
-      "https://roundtablelearning.com/wp-content/uploads/2025/02/Compass-Digital_Handwashing_B-Roll_4K_11-thegem-news-carousel.jpg"
+      "/src/assets/blogs/2.webp"
     ],
     "likes": 15,
     "comments": 3,
@@ -131,7 +131,23 @@
       "sections": [
         {
           "heading": "Understanding VR Training",
-          "content": "VR training creates immersive, interactive learning experiences that simulate real-world scenarios in a safe, controlled environment."
+          "content": "VR training creates immersive, interactive learning experiences that simulate real-world scenarios in a safe, controlled environment. Learners practice procedures, decision‑making, and soft skills with immediate feedback and measurable performance data."
+        },
+        {
+          "heading": "Where VR Training Delivers the Most Value",
+          "content": "Best used for high-risk, high-variability, or high-cost tasks—such as safety procedures, equipment operations, customer interactions, and leadership simulations—where traditional training is either too risky, too expensive, or not realistic enough."
+        },
+        {
+          "heading": "Hardware and Software in 2025",
+          "content": "Modern standalone headsets like Meta Quest 3 and Apple Vision Pro support higher-fidelity graphics, hand tracking, and passthrough MR. Content is distributed via enterprise device management and XRS platforms for analytics, version control, and user access."
+        },
+        {
+          "heading": "Measuring Impact",
+          "content": "Organizations track completion, accuracy, time-on-task, and scenario outcomes inside an XRS. These metrics tie to KPIs such as reduced incidents, faster onboarding, and improved quality scores."
+        },
+        {
+          "heading": "When Not to Use VR",
+          "content": "If objectives focus on knowledge recall with low consequence or if hands-on fidelity is unnecessary, microlearning or ILT/VILT may be more cost-effective. A short discovery/TNA verifies the fit."
         }
       ],
       "conclusion": "VR training offers unprecedented opportunities for effective, engaging, and safe employee development."
@@ -145,9 +161,9 @@
     "slug": "the-4-steps-to-conduct-an-effective-training-needs-analysis",
     "title": "The 4 Steps To Conduct An Effective Training Needs Analysis",
     "author": {
-      "name": "John Smith",
-      "avatar": "/images/authors/john-smith.png",
-      "bio": "Senior Learning & Development Consultant at Roundtable Learning."
+      "name": "Hanna Liszniansky",
+      "avatar": "/images/assets/hanna-liszniansky.png",
+      "bio": "Hanna Liszniansky is the Marketing Manager at Roundtable Learning. Before joining the team, she worked for a recruiting firm specializing in reviving the Rust Belt's trades workforce, where she partnered with clients to build hiring pathways and workforce development programs."
     },
     "date": "October 16, 2020",
     "time": "2:30 pm",
@@ -155,9 +171,9 @@
     "category": "Blog",
     "tags": ["Training", "Analysis", "L&D"],
     "excerpt": "Learn the essential 4 steps to conduct an effective training needs analysis and improve your organization's learning outcomes.",
-    "featuredImage": "https://roundtablelearning.com/wp-content/uploads/2023/08/AdobeStock_357378605-scaled-thegem-news-carousel.jpeg",
+    "featuredImage": "/src/assets/blogs/3.webp",
     "heroImages": [
-      "https://roundtablelearning.com/wp-content/uploads/2023/08/AdobeStock_357378605-scaled-thegem-news-carousel.jpeg"
+      "/src/assets/blogs/3.webp"
     ],
     "likes": 22,
     "comments": 5,
@@ -165,8 +181,20 @@
       "introduction": "A structured approach to training needs analysis ensures your training programs deliver real results.",
       "sections": [
         {
-          "heading": "The 4 Essential Steps",
-          "content": "Follow these proven steps to conduct an effective training needs analysis."
+          "heading": "Step 1 — Define the Problem and Success Criteria",
+          "content": "Write a concise problem statement and agree on how success will be measured (e.g., fewer incidents, shorter onboarding, higher quality scores). Align with business goals, not just training outputs."
+        },
+        {
+          "heading": "Step 2 — Collect Data",
+          "content": "Gather qualitative and quantitative inputs: interviews, observations, SOP reviews, performance data, LMS reports, error logs, and customer feedback. Look for patterns and constraints (tools, process, environment)."
+        },
+        {
+          "heading": "Step 3 — Diagnose Root Causes",
+          "content": "Sort findings into skill/knowledge gaps vs. non-training issues (tools, process, incentives). Use a simple fishbone or 5 Whys to validate why the gap exists and who is affected."
+        },
+        {
+          "heading": "Step 4 — Recommend Targeted Interventions",
+          "content": "Map each root cause to the most efficient solution: job aids or microlearning for recall; simulation/VR for practice; process or tooling changes for non-training problems. Prioritize by impact vs. effort and define success metrics, owners, and timeline."
         }
       ],
       "conclusion": "By following these 4 steps, you'll create training programs that truly address your organization's needs."
@@ -180,9 +208,9 @@
     "slug": "what-is-extended-reality-everything-you-need-to-know",
     "title": "What Is Extended Reality? Everything You Need To Know",
     "author": {
-      "name": "Sarah Johnson",
-      "avatar": "/images/authors/sarah-johnson.png",
-      "bio": "XR Technology Specialist at Roundtable Learning."
+      "name": "Hanna Liszniansky",
+      "avatar": "/images/assets/hanna-liszniansky.png",
+      "bio": "Hanna Liszniansky is the Marketing Manager at Roundtable Learning. Before joining the team, she worked for a recruiting firm specializing in reviving the Rust Belt's trades workforce, where she partnered with clients to build hiring pathways and workforce development programs."
     },
     "date": "July 24, 2023",
     "time": "11:45 am",
@@ -190,9 +218,9 @@
     "category": "Blog",
     "tags": ["Extended Reality", "XR", "AR", "VR", "MR"],
     "excerpt": "Extended Reality (XR) encompasses AR, VR, and MR technologies. Learn everything about XR and its applications in corporate training.",
-    "featuredImage": "https://roundtablelearning.com/wp-content/uploads/2023/07/What-Is-Extended-Reality-2-thegem-news-carousel.png",
+    "featuredImage": "/src/assets/blogs/4.webp",
     "heroImages": [
-      "https://roundtablelearning.com/wp-content/uploads/2023/07/What-Is-Extended-Reality-2-thegem-news-carousel.png"
+      "/src/assets/blogs/4.webp"
     ],
     "likes": 18,
     "comments": 7,
@@ -202,6 +230,26 @@
         {
           "heading": "What is XR?",
           "content": "XR is an umbrella term covering Virtual Reality, Augmented Reality, and Mixed Reality technologies."
+        },
+        {
+          "heading": "VR, AR, and MR — What’s the Difference?",
+          "content": "Virtual Reality (VR) fully immerses learners in a simulated environment for hands-on practice without real-world risk. Augmented Reality (AR) overlays digital guidance onto the real world using phones or head‑mounted devices to support on‑the‑job performance. Mixed Reality (MR) anchors 3D content into physical space so learners can interact with both digital objects and their surroundings with realistic occlusion and spatial understanding."
+        },
+        {
+          "heading": "Where XR Fits in Corporate Training",
+          "content": "XR excels when practice, spatial understanding, or real‑time guidance matters: equipment operation and maintenance, safety walk‑throughs, warehouse and logistics scenarios, soft‑skills roleplays, and complex assembly. XR reduces incidents, accelerates time‑to‑competency, and increases engagement compared to slide‑based learning alone."
+        },
+        {
+          "heading": "Choosing the Right Modality",
+          "content": "Use VR for repeatable practice and decision‑making in simulated environments; use AR for job aids, remote expert support, and step‑by‑step guidance at the workstation; select MR when precise spatial placement and interaction with physical tools are required. A brief needs analysis ensures the modality maps to the performance goal."
+        },
+        {
+          "heading": "Deployment and Infrastructure",
+          "content": "Modern XR programs rely on device management and an experience‑management platform (XRS) to handle user access, version control, analytics, and content updates across locations. Standalone headsets and mobile devices simplify scaling while keeping IT overhead predictable."
+        },
+        {
+          "heading": "Measuring Results",
+          "content": "Track completion, accuracy, scenario outcomes, and time‑on‑task from the XRS, then tie those metrics to business KPIs such as incident reduction, first‑time‑right rates, throughput, and retention. Start with a pilot, benchmark current performance, and compare post‑rollout results."
         }
       ],
       "conclusion": "XR technologies offer powerful tools for creating engaging, effective training experiences."
@@ -216,7 +264,7 @@
     "title": "Custom VR Training vs Off-the-Shelf Solutions: Our Comparison",
     "author": {
       "name": "Hanna Liszniansky",
-      "avatar": "/images/authors/hanna-liszniansky.png",
+      "avatar": "/images/assets/hanna-liszniansky.png",
       "bio": "Hanna Liszniansky is the Marketing Manager at Roundtable Learning. Before joining the team, she worked for a recruiting firm specializing in reviving the Rust Belt's trades workforce, where she partnered with clients to build hiring pathways and workforce development programs. Her experience gave her firsthand insight into how inadequate training fuels turnover and limits opportunity—especially in trades and skilled professions. Today, she's focused on championing learning-first approaches that grow and retain the next generation of workers."
     },
     "date": "October 3, 2025",
@@ -225,9 +273,9 @@
     "category": "Blog",
     "tags": ["Custom Training", "VR", "Off-the-Shelf", "Virtual Reality"],
     "excerpt": "Virtual reality (VR) is transforming corporate training by offering immersive experiences that engage employees like never before. Organizations face a crucial choice: custom VR training or off-the-shelf solutions—each with unique benefits and challenges.",
-    "featuredImage": "https://roundtablelearning.com/wp-content/uploads/2024/05/Meta-Quest-3-scaled.jpeg",
+    "featuredImage": "/src/assets/blogs/5.webp",
     "heroImages": [
-      "https://roundtablelearning.com/wp-content/uploads/2024/05/Meta-Quest-3-scaled.jpeg",
+      "/src/assets/blogs/5.webp",
       "https://roundtablelearning.com/wp-content/uploads/2024/05/Corporate-Learning-Lessons-5-steps-to-squashing-the-Skills-Gap-scaled.jpg",
       "https://roundtablelearning.com/wp-content/uploads/2024/02/KE9kgFCT5uYEu2pbyDnQkH-scaled.jpg",
       "https://roundtablelearning.com/wp-content/uploads/2024/05/11-3-23_Headset-Shoot_14-2_Web-Size.png",
@@ -328,7 +376,7 @@
     "title": "What Is Phygital?",
     "author": {
       "name": "Hanna Liszniansky",
-      "avatar": "/images/authors/hanna-liszniansky.png",
+      "avatar": "/images/assets/hanna-liszniansky.png",
       "bio": "Hanna Liszniansky is the Marketing Manager at Roundtable Learning. Before joining the team, she worked for a recruiting firm specializing in reviving the Rust Belt's trades workforce, where she partnered with clients to build hiring pathways and workforce development programs. Her experience gave her firsthand insight into how inadequate training fuels turnover and limits opportunity—especially in trades and skilled professions. Today, she's focused on championing learning-first approaches that grow and retain the next generation of workers."
     },
     "date": "September 19, 2025",
@@ -337,9 +385,9 @@
     "category": "Blog",
     "tags": ["Phygital", "AR", "VR", "Training Technology", "Immersive Learning"],
     "excerpt": "Stop separating training from work. That's the core problem with most corporate learning programs – they pull employees away from their actual jobs to learn skills they'll need to apply later, somewhere else, under different conditions.",
-    "featuredImage": "https://roundtablelearning.com/wp-content/uploads/2024/05/Meta-Quest-3-scaled.jpeg",
+    "featuredImage": "/src/assets/blogs/6.webp",
     "heroImages": [
-      "https://roundtablelearning.com/wp-content/uploads/2024/05/Meta-Quest-3-scaled.jpeg",
+      "/src/assets/blogs/6.webp",
       "https://roundtablelearning.com/wp-content/uploads/2024/05/Corporate-Learning-Lessons-5-steps-to-squashing-the-Skills-Gap-scaled.jpg",
       "https://roundtablelearning.com/wp-content/uploads/2024/02/KE9kgFCT5uYEu2pbyDnQkH-scaled.jpg",
       "https://roundtablelearning.com/wp-content/uploads/2024/05/11-3-23_Headset-Shoot_14-2_Web-Size.png",
@@ -425,7 +473,7 @@
     "title": "The Future of Immersive Learning: Trends and Innovations in XR Training Solutions",
     "author": {
       "name": "Hanna Liszniansky",
-      "avatar": "/images/authors/hanna-liszniansky.png",
+      "avatar": "/images/assets/hanna-liszniansky.png",
       "bio": "Hanna Liszniansky is the Marketing Manager at Roundtable Learning. Before joining the team, she worked for a recruiting firm specializing in reviving the Rust Belt's trades workforce, where she partnered with clients to build hiring pathways and workforce development programs. Her experience gave her firsthand insight into how inadequate training fuels turnover and limits opportunity—especially in trades and skilled professions. Today, she's focused on championing learning-first approaches that grow and retain the next generation of workers."
     },
     "date": "September 17, 2025",
@@ -434,9 +482,9 @@
     "category": "Blog",
     "tags": ["Augmented Reality", "Corporate Training", "Virtual Reality"],
     "excerpt": "When we talk about XR trends, we're covering the whole field of virtual reality, augmented reality and their hybrid called mixed reality. And there's a lot to cover. Businesses and organizations are seeing more and more how XR technology can deliver results on numerous operations or initiatives.",
-    "featuredImage": "https://roundtablelearning.com/wp-content/uploads/2024/05/Meta-Quest-3-scaled.jpeg",
+    "featuredImage": "/src/assets/blogs/7.webp",
     "heroImages": [
-      "https://roundtablelearning.com/wp-content/uploads/2024/05/Meta-Quest-3-scaled.jpeg",
+      "/src/assets/blogs/7.webp",
       "https://roundtablelearning.com/wp-content/uploads/2024/05/Corporate-Learning-Lessons-5-steps-to-squashing-the-Skills-Gap-scaled.jpg",
       "https://roundtablelearning.com/wp-content/uploads/2024/02/KE9kgFCT5uYEu2pbyDnQkH-scaled.jpg",
       "https://roundtablelearning.com/wp-content/uploads/2024/05/11-3-23_Headset-Shoot_14-2_Web-Size.png",
@@ -522,7 +570,7 @@
     "title": "What Is Microlearning And Why Does It Matter? Examples And Best Practices",
     "author": {
       "name": "Hanna Liszniansky",
-      "avatar": "/images/authors/hanna-liszniansky.png",
+      "avatar": "/images/assets/hanna-liszniansky.png",
       "bio": "Hanna Liszniansky is the Marketing Manager at Roundtable Learning. Before joining the team, she worked for a recruiting firm specializing in reviving the Rust Belt's trades workforce, where she partnered with clients to build hiring pathways and workforce development programs. Her experience gave her firsthand insight into how inadequate training fuels turnover and limits opportunity—especially in trades and skilled professions. Today, she's focused on championing learning-first approaches that grow and retain the next generation of workers."
     },
     "date": "September 5, 2025",
@@ -531,9 +579,9 @@
     "category": "Blog",
     "tags": ["Corporate Training", "eLearning"],
     "excerpt": "Microlearning is learning content, delivered in a small chunks to address a clearly-identified gap in knowledge, skills or attitudes (KSAs). To define microlearning more clearly: it is usually in a portable or easy-access format (handout, mobile doc, Articulate slides, common app).",
-    "featuredImage": "https://roundtablelearning.com/wp-content/uploads/2024/05/Meta-Quest-3-scaled.jpeg",
+    "featuredImage": "/src/assets/blogs/8.webp",
     "heroImages": [
-      "https://roundtablelearning.com/wp-content/uploads/2024/05/Meta-Quest-3-scaled.jpeg",
+      "/src/assets/blogs/8.webp",
       "https://roundtablelearning.com/wp-content/uploads/2024/05/Corporate-Learning-Lessons-5-steps-to-squashing-the-Skills-Gap-scaled.jpg",
       "https://roundtablelearning.com/wp-content/uploads/2024/02/KE9kgFCT5uYEu2pbyDnQkH-scaled.jpg",
       "https://roundtablelearning.com/wp-content/uploads/2024/05/11-3-23_Headset-Shoot_14-2_Web-Size.png",
@@ -630,7 +678,7 @@
     "title": "10 Benefits of Microlearning Based Training",
     "author": {
       "name": "Hanna Liszniansky",
-      "avatar": "/images/authors/hanna-liszniansky.png",
+      "avatar": "/images/assets/hanna-liszniansky.png",
       "bio": "Hanna Liszniansky is the Marketing Manager at Roundtable Learning. Before joining the team, she worked for a recruiting firm specializing in reviving the Rust Belt's trades workforce, where she partnered with clients to build hiring pathways and workforce development programs. Her experience gave her firsthand insight into how inadequate training fuels turnover and limits opportunity—especially in trades and skilled professions. Today, she's focused on championing learning-first approaches that grow and retain the next generation of workers."
     },
     "date": "September 5, 2025",
@@ -639,9 +687,9 @@
     "category": "Blog",
     "tags": ["Corporate Training"],
     "excerpt": "Microlearning benefits are many, but what is microlearning itself? There's no dictionary definition, but microlearning courses share a few common attributes. Naturally, they're short and only a few minutes long.",
-    "featuredImage": "https://roundtablelearning.com/wp-content/uploads/2024/05/Meta-Quest-3-scaled.jpeg",
+    "featuredImage": "/src/assets/blogs/9.webp",
     "heroImages": [
-      "https://roundtablelearning.com/wp-content/uploads/2024/05/Meta-Quest-3-scaled.jpeg",
+      "/src/assets/blogs/9.webp",
       "https://roundtablelearning.com/wp-content/uploads/2024/05/Corporate-Learning-Lessons-5-steps-to-squashing-the-Skills-Gap-scaled.jpg",
       "https://roundtablelearning.com/wp-content/uploads/2024/02/KE9kgFCT5uYEu2pbyDnQkH-scaled.jpg",
       "https://roundtablelearning.com/wp-content/uploads/2024/05/11-3-23_Headset-Shoot_14-2_Web-Size.png",
@@ -731,7 +779,7 @@
     "title": "3 Biggest Benefits of VR In Warehousing",
     "author": {
       "name": "Hanna Liszniansky",
-      "avatar": "/images/authors/hanna-liszniansky.png",
+      "avatar": "/images/assets/hanna-liszniansky.png",
       "bio": "Hanna Liszniansky is the Marketing Manager at Roundtable Learning. Before joining the team, she worked for a recruiting firm specializing in reviving the Rust Belt's trades workforce, where she partnered with clients to build hiring pathways and workforce development programs. Her experience gave her firsthand insight into how inadequate training fuels turnover and limits opportunity—especially in trades and skilled professions. Today, she's focused on championing learning-first approaches that grow and retain the next generation of workers."
     },
     "date": "July 11, 2025",
@@ -740,9 +788,9 @@
     "category": "Blog",
     "tags": ["Virtual Reality", "XRS"],
     "excerpt": "Modern warehousing relies on numerous interlocking processes and parts (and VR warehouse skills development can help them stay together). There's adherence to safety procedures and proficient use of equipment like pallet jacks, barcode scanners, plus other heavy machinery.",
-    "featuredImage": "https://roundtablelearning.com/wp-content/uploads/2024/05/Meta-Quest-3-scaled.jpeg",
+    "featuredImage": "/src/assets/blogs/12.webp",
     "heroImages": [
-      "https://roundtablelearning.com/wp-content/uploads/2024/05/Meta-Quest-3-scaled.jpeg",
+      "/src/assets/blogs/12.webp",
       "https://roundtablelearning.com/wp-content/uploads/2024/05/Corporate-Learning-Lessons-5-steps-to-squashing-the-Skills-Gap-scaled.jpg",
       "https://roundtablelearning.com/wp-content/uploads/2024/02/KE9kgFCT5uYEu2pbyDnQkH-scaled.jpg",
       "https://roundtablelearning.com/wp-content/uploads/2024/05/11-3-23_Headset-Shoot_14-2_Web-Size.png",
@@ -849,7 +897,7 @@
     "title": "AR vs VR Training: How to Choose the Best Technology",
     "author": {
       "name": "Hanna Liszniansky",
-      "avatar": "/images/authors/hanna-liszniansky.png",
+      "avatar": "/images/assets/hanna-liszniansky.png",
       "bio": "Hanna Liszniansky is the Marketing Manager at Roundtable Learning. Before joining the team, she worked for a recruiting firm specializing in reviving the Rust Belt's trades workforce, where she partnered with clients to build hiring pathways and workforce development programs. Her experience gave her firsthand insight into how inadequate training fuels turnover and limits opportunity—especially in trades and skilled professions. Today, she's focused on championing learning-first approaches that grow and retain the next generation of workers."
     },
     "date": "July 8, 2025",
@@ -858,9 +906,9 @@
     "category": "Blog",
     "tags": ["Augmented Reality", "Virtual Reality"],
     "excerpt": "While Virtual Reality (VR) and Augmented Reality (AR) aren't the same, AR vs VR have a lot in common. They have the ability to immerse learners in a digital experience that mirrors the real world.",
-    "featuredImage": "/images/blog/ar-vs-vr-training.jpg",
+    "featuredImage": "/src/assets/blogs/11.webp",
     "heroImages": [
-      "https://roundtablelearning.com/wp-content/uploads/2024/05/Meta-Quest-3-scaled.jpeg",
+      "/src/assets/blogs/11.webp",
       "https://roundtablelearning.com/wp-content/uploads/2024/05/Corporate-Learning-Lessons-5-steps-to-squashing-the-Skills-Gap-scaled.jpg",
       "https://roundtablelearning.com/wp-content/uploads/2024/02/KE9kgFCT5uYEu2pbyDnQkH-scaled.jpg",
       "https://roundtablelearning.com/wp-content/uploads/2024/05/11-3-23_Headset-Shoot_14-2_Web-Size.png",
@@ -1017,7 +1065,7 @@
     "title": "What Is Just-In-Time Training? Less Than 100 Words",
     "author": {
       "name": "Hanna Liszniansky",
-      "avatar": "/images/authors/hanna-liszniansky.png",
+      "avatar": "/images/assets/hanna-liszniansky.png",
       "bio": "Hanna Liszniansky is the Marketing Manager at Roundtable Learning. Before joining the team, she worked for a recruiting firm specializing in reviving the Rust Belt's trades workforce, where she partnered with clients to build hiring pathways and workforce development programs. Her experience gave her firsthand insight into how inadequate training fuels turnover and limits opportunity—especially in trades and skilled professions. Today, she's focused on championing learning-first approaches that grow and retain the next generation of workers."
     },
     "date": "July 7, 2025",
@@ -1026,9 +1074,9 @@
     "category": "Blog",
     "tags": ["Training", "Microlearning", "eLearning"],
     "excerpt": "Just-In-Time (JIT) training is the concept of on-demand learning that's provided in times of immediate need. Developed with the principles of microlearning and mobile learning, JIT tools are designed to be accessed quickly and easily comprehended.",
-    "featuredImage": "/images/blog/jit-training.jpg",
+    "featuredImage": "/src/assets/blogs/10.webp",
     "heroImages": [
-      "https://roundtablelearning.com/wp-content/uploads/2024/05/Meta-Quest-3-scaled.jpeg",
+      "/src/assets/blogs/10.webp",
       "https://roundtablelearning.com/wp-content/uploads/2024/05/Corporate-Learning-Lessons-5-steps-to-squashing-the-Skills-Gap-scaled.jpg",
       "https://roundtablelearning.com/wp-content/uploads/2024/02/KE9kgFCT5uYEu2pbyDnQkH-scaled.jpg",
       "https://roundtablelearning.com/wp-content/uploads/2024/05/11-3-23_Headset-Shoot_14-2_Web-Size.png",
@@ -1084,7 +1132,7 @@
     "title": "How To Access Virtual Reality Without A Headset: 3 Alternative Options",
     "author": {
       "name": "Hanna Liszniansky",
-      "avatar": "/images/authors/hanna-liszniansky.png",
+      "avatar": "/images/assets/hanna-liszniansky.png",
       "bio": "Hanna Liszniansky is the Marketing Manager at Roundtable Learning. Before joining the team, she worked for a recruiting firm specializing in reviving the Rust Belt's trades workforce, where she partnered with clients to build hiring pathways and workforce development programs. Her experience gave her firsthand insight into how inadequate training fuels turnover and limits opportunity—especially in trades and skilled professions. Today, she's focused on championing learning-first approaches that grow and retain the next generation of workers."
     },
     "date": "July 3, 2025",
@@ -1093,9 +1141,9 @@
     "category": "Blog",
     "tags": ["Virtual Reality"],
     "excerpt": "One of the very early VR headsets was literally about the size of a small microwave. These enormous, rudimentary head-mounted displays (HMDs) came about as job aids, specifically for aviation and related needs.",
-    "featuredImage": "/images/blog/vr-without-headset.jpg",
+    "featuredImage": "/src/assets/blogs/13.webp",
     "heroImages": [
-      "https://roundtablelearning.com/wp-content/uploads/2024/05/Meta-Quest-3-scaled.jpeg",
+      "/src/assets/blogs/13.webp",
       "https://roundtablelearning.com/wp-content/uploads/2024/05/Corporate-Learning-Lessons-5-steps-to-squashing-the-Skills-Gap-scaled.jpg",
       "https://roundtablelearning.com/wp-content/uploads/2024/02/KE9kgFCT5uYEu2pbyDnQkH-scaled.jpg",
       "https://roundtablelearning.com/wp-content/uploads/2024/05/11-3-23_Headset-Shoot_14-2_Web-Size.png",
@@ -1237,7 +1285,7 @@
     "title": "How Much Does VR Training Cost in 2025? Plus the Four-Stages of Immersive Content Development",
     "author": {
       "name": "Hanna Liszniansky",
-      "avatar": "/images/authors/hanna-liszniansky.png",
+      "avatar": "/images/assets/hanna-liszniansky.png",
       "bio": "Hanna Liszniansky is the Marketing Manager at Roundtable Learning. Before joining the team, she worked for a recruiting firm specializing in reviving the Rust Belt's trades workforce, where she partnered with clients to build hiring pathways and workforce development programs. Her experience gave her firsthand insight into how inadequate training fuels turnover and limits opportunity—especially in trades and skilled professions. Today, she's focused on championing learning-first approaches that grow and retain the next generation of workers."
     },
     "date": "June 30, 2025",
@@ -1246,9 +1294,9 @@
     "category": "Blog",
     "tags": ["Virtual Reality"],
     "excerpt": "The quick answer is that VR training cost analysis is a comprehensive figure. However, single-module, entry-level projects start at $50,000 USD from reputable firms. Highly interactive, branched-scenario, multi-module immersive 3D job trainings with numerous headsets begin around $195,000.",
-    "featuredImage": "https://roundtablelearning.com/wp-content/uploads/2024/05/Meta-Quest-3-scaled.jpeg",
+    "featuredImage": "/src/assets/blogs/14.webp",
     "heroImages": [
-      "https://roundtablelearning.com/wp-content/uploads/2024/05/Meta-Quest-3-scaled.jpeg",
+      "/src/assets/blogs/14.webp",
       "https://roundtablelearning.com/wp-content/uploads/2024/05/Corporate-Learning-Lessons-5-steps-to-squashing-the-Skills-Gap-scaled.jpg",
       "https://roundtablelearning.com/wp-content/uploads/2024/02/KE9kgFCT5uYEu2pbyDnQkH-scaled.jpg",
       "https://roundtablelearning.com/wp-content/uploads/2024/05/11-3-23_Headset-Shoot_14-2_Web-Size.png",
@@ -1399,7 +1447,7 @@
     "title": "What is the 70:20:10 Model? Less Than 100 Words",
     "author": {
       "name": "Hanna Liszniansky",
-      "avatar": "/images/authors/hanna-liszniansky.png",
+      "avatar": "/images/assets/hanna-liszniansky.png",
       "bio": "Hanna Liszniansky is the Marketing Manager at Roundtable Learning. Before joining the team, she worked for a recruiting firm specializing in reviving the Rust Belt's trades workforce, where she partnered with clients to build hiring pathways and workforce development programs. Her experience gave her firsthand insight into how inadequate training fuels turnover and limits opportunity—especially in trades and skilled professions. Today, she's focused on championing learning-first approaches that grow and retain the next generation of workers."
     },
     "date": "June 28, 2025",
@@ -1408,9 +1456,9 @@
     "category": "Blog",
     "tags": ["Corporate Training", "eLearning"],
     "excerpt": "The 70:20:10 Model for Learning and Development was developed from research at the Center for Creative Leadership (CCL) in the 1980s and suggests that the most effective learning comes from on-the-job experiences (70%), social interactions (20%), and formal training such as classroom training or online courses (10%).",
-    "featuredImage": "https://lh6.googleusercontent.com/JzEqBOhvE3NwfUChpA5-jb6A5YlAKbotE7VZun6oxFDCza9_JX60HnWWTHbic9QXqXrFizpi7URm7VyzSWKhil-0dvhUvMRmTG1pqY0nBtpyQ9KYBJ1LoMBrknWCB9YsQZXc10A85MLmp-vv3OihNA",
+    "featuredImage": "/src/assets/blogs/15.webp",
     "heroImages": [
-      "https://roundtablelearning.com/wp-content/uploads/2024/05/Meta-Quest-3-scaled.jpeg",
+      "/src/assets/blogs/15.webp",
       "https://roundtablelearning.com/wp-content/uploads/2024/05/Corporate-Learning-Lessons-5-steps-to-squashing-the-Skills-Gap-scaled.jpg",
       "https://roundtablelearning.com/wp-content/uploads/2024/02/KE9kgFCT5uYEu2pbyDnQkH-scaled.jpg",
       "https://roundtablelearning.com/wp-content/uploads/2024/05/11-3-23_Headset-Shoot_14-2_Web-Size.png",
@@ -1448,7 +1496,7 @@
     "title": "What Are CGI Characters? Less Than 100 Words",
     "author": {
       "name": "Hanna Liszniansky",
-      "avatar": "/images/authors/hanna-liszniansky.png",
+      "avatar": "/images/assets/hanna-liszniansky.png",
       "bio": "Hanna Liszniansky is the Marketing Manager at Roundtable Learning. Before joining the team, she worked for a recruiting firm specializing in reviving the Rust Belt's trades workforce, where she partnered with clients to build hiring pathways and workforce development programs. Her experience gave her firsthand insight into how inadequate training fuels turnover and limits opportunity—especially in trades and skilled professions. Today, she's focused on championing learning-first approaches that grow and retain the next generation of workers."
     },
     "date": "June 28, 2025",
@@ -1457,9 +1505,9 @@
     "category": "Blog",
     "tags": ["Virtual Reality", "CGI", "Training Technology"],
     "excerpt": "CGI characters are a form of computer-generated animated models. CGI characters are created digitally, and they can be customized, edited, or repurposed at any time. This results in quick development cycles – developers can adjust preexisting CGI characters for different purposes.",
-    "featuredImage": "https://roundtablelearning.com/wp-content/uploads/2023/05/blocks-image-235.png",
+    "featuredImage": "/src/assets/blogs/16.webp",
     "heroImages": [
-      "https://roundtablelearning.com/wp-content/uploads/2024/05/Meta-Quest-3-scaled.jpeg",
+      "/src/assets/blogs/16.webp",
       "https://roundtablelearning.com/wp-content/uploads/2024/05/Corporate-Learning-Lessons-5-steps-to-squashing-the-Skills-Gap-scaled.jpg",
       "https://roundtablelearning.com/wp-content/uploads/2024/02/KE9kgFCT5uYEu2pbyDnQkH-scaled.jpg",
       "https://roundtablelearning.com/wp-content/uploads/2024/05/11-3-23_Headset-Shoot_14-2_Web-Size.png",
@@ -1521,7 +1569,7 @@
     "title": "What Is Compliance Training? Less Than 100 Words",
     "author": {
       "name": "Hanna Liszniansky",
-      "avatar": "/images/authors/hanna-liszniansky.png",
+      "avatar": "/images/assets/hanna-liszniansky.png",
       "bio": "Hanna Liszniansky is the Marketing Manager at Roundtable Learning. Before joining the team, she worked for a recruiting firm specializing in reviving the Rust Belt's trades workforce, where she partnered with clients to build hiring pathways and workforce development programs. Her experience gave her firsthand insight into how inadequate training fuels turnover and limits opportunity—especially in trades and skilled professions. Today, she's focused on championing learning-first approaches that grow and retain the next generation of workers."
     },
     "date": "June 26, 2025",
@@ -1530,9 +1578,9 @@
     "category": "Blog",
     "tags": ["Corporate Training"],
     "excerpt": "Compliance training is employee training mandated by legislation, regulation, or policy. This type of training educates your employees on the laws or regulations applicable to their job function or industry. These training programs are usually mandatory with regular completion of the training required to achieve and maintain compliance.",
-    "featuredImage": "https://roundtablelearning.com/wp-content/uploads/2023/05/blocks-image-235.png",
+    "featuredImage": "/src/assets/blogs/17.webp",
     "heroImages": [
-      "https://roundtablelearning.com/wp-content/uploads/2024/05/Meta-Quest-3-scaled.jpeg",
+      "/src/assets/blogs/17.webp",
       "https://roundtablelearning.com/wp-content/uploads/2024/05/Corporate-Learning-Lessons-5-steps-to-squashing-the-Skills-Gap-scaled.jpg",
       "https://roundtablelearning.com/wp-content/uploads/2024/02/KE9kgFCT5uYEu2pbyDnQkH-scaled.jpg",
       "https://roundtablelearning.com/wp-content/uploads/2024/05/11-3-23_Headset-Shoot_14-2_Web-Size.png",
@@ -1598,7 +1646,7 @@
     "title": "What Is A Job Aid? Less Than 100 Words",
     "author": {
       "name": "Hanna Liszniansky",
-      "avatar": "/images/authors/hanna-liszniansky.png",
+      "avatar": "/images/assets/hanna-liszniansky.png",
       "bio": "Hanna Liszniansky is the Marketing Manager at Roundtable Learning. Before joining the team, she worked for a recruiting firm specializing in reviving the Rust Belt's trades workforce, where she partnered with clients to build hiring pathways and workforce development programs. Her experience gave her firsthand insight into how inadequate training fuels turnover and limits opportunity—especially in trades and skilled professions. Today, she's focused on championing learning-first approaches that grow and retain the next generation of workers."
     },
     "date": "June 24, 2025",
@@ -1607,9 +1655,9 @@
     "category": "Blog",
     "tags": ["eLearning"],
     "excerpt": "A job aid is any type of digital material or handout that assists employees in their learning process. In the context of corporate training, job aids are typically used as a learning reinforcement tool given to employees after a training session.",
-    "featuredImage": "https://roundtablelearning.com/wp-content/uploads/2023/05/blocks-image-235.png",
+    "featuredImage": "/src/assets/blogs/18.webp",
     "heroImages": [
-      "https://roundtablelearning.com/wp-content/uploads/2024/05/Meta-Quest-3-scaled.jpeg",
+      "/src/assets/blogs/19.webp",
       "https://roundtablelearning.com/wp-content/uploads/2024/05/Corporate-Learning-Lessons-5-steps-to-squashing-the-Skills-Gap-scaled.jpg",
       "https://roundtablelearning.com/wp-content/uploads/2024/02/KE9kgFCT5uYEu2pbyDnQkH-scaled.jpg",
       "https://roundtablelearning.com/wp-content/uploads/2024/05/11-3-23_Headset-Shoot_14-2_Web-Size.png",
@@ -1688,7 +1736,7 @@
     "likes": 0,
     "comments": 2,
     "heroImages": [
-      "https://roundtablelearning.com/wp-content/uploads/2024/05/Meta-Quest-3-scaled.jpeg",
+      "/src/assets/blogs/18.webp",
       "https://roundtablelearning.com/wp-content/uploads/2024/05/Corporate-Learning-Lessons-5-steps-to-squashing-the-Skills-Gap-scaled.jpg",
       "https://roundtablelearning.com/wp-content/uploads/2024/02/KE9kgFCT5uYEu2pbyDnQkH-scaled.jpg",
       "https://roundtablelearning.com/wp-content/uploads/2024/05/11-3-23_Headset-Shoot_14-2_Web-Size.png",
@@ -1773,7 +1821,7 @@
     "likes": 0,
     "comments": 1,
     "heroImages": [
-      "https://roundtablelearning.com/wp-content/uploads/2024/05/Meta-Quest-3-scaled.jpeg",
+      "/src/assets/blogs/20.webp",
       "https://roundtablelearning.com/wp-content/uploads/2024/05/Corporate-Learning-Lessons-5-steps-to-squashing-the-Skills-Gap-scaled.jpg",
       "https://roundtablelearning.com/wp-content/uploads/2024/02/KE9kgFCT5uYEu2pbyDnQkH-scaled.jpg",
       "https://roundtablelearning.com/wp-content/uploads/2024/05/11-3-23_Headset-Shoot_14-2_Web-Size.png",
