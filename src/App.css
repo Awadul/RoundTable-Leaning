@@ -75,12 +75,14 @@
   justify-content: space-between;
   gap: 2rem;
   width: 100%;
+  min-height: 72px;
 }
 
 .header-right {
   display: flex;
   align-items: center;
   gap: 2rem;
+  height: 100%;
 }
 
 .logo {
@@ -100,20 +102,22 @@
   display: flex;
   align-items: center;
   gap: 2rem;
+  height: 100%;
 }
 
 .nav-link {
-  color: var(--bright-teal);
+  color: #03708f;
   text-decoration: none;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   letter-spacing: 0.5px;
-  padding-top: 1rem;
+  padding: 1.5rem 0 1.5rem 0;
   border-top: 3px solid transparent;
   transition: color 0.3s ease, border-color 0.3s ease;
   display: inline-flex;
   align-items: center;
   position: relative;
+  height: 100%;
 }
 
 /* Hamburger Menu - Mobile Only */
@@ -264,24 +268,20 @@
 }
 
 .nav-link:hover {
-  border-top-color: var(--bright-teal);
+  border-top-color: #03708f;
 }
 
 .nav-link.active {
-  border-top-color: var(--bright-teal);
+  border-top-color: #03708f;
 }
 
+/* Search icon - Hidden/Removed */
 .search-icon {
-  color: var(--nav-gray);
-  cursor: pointer;
-  transition: color 0.3s ease;
-  display: inline-flex;
-  align-items: center;
-  padding-top: 1rem;
+  display: none;
 }
 
 .search-icon:hover {
-  color: var(--bright-teal);
+  display: none;
 }
 
 .header-cta {
@@ -293,6 +293,9 @@
   font-size: 0.9rem;
   background-color: #09a6e4 !important;
   color: white !important;
+  display: inline-flex;
+  align-items: center;
+  align-self: center;
 }
 
 /* Mega Menu */
@@ -1225,8 +1228,7 @@
   }
 
   .search-icon {
-    padding: 0.25rem;
-    flex-shrink: 0;
+    display: none; /* Search icon removed */
   }
 
   .header-cta {
